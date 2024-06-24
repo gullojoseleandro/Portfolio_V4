@@ -1,0 +1,24 @@
+.grid {
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  margin: 0;
+  padding: 0;
+}
+
+.separationline {
+  border: none;
+  opacity: 100%;
+  height: 2px;
+  background-color: #fca311;
+  margin: 0 0 15px 0;
+}
+
+.titles {
+  margin: 0 !important;
+  text-shadow: 2px 2px 2px #232323;
+}
+
+.sidepage{
+  background-color: rgba(63,113,143,255);
+}

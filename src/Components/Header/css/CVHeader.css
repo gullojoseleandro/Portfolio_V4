@@ -1,0 +1,14 @@
+.cvheader{
+    background-color: rgba(63,113,143,255);
+    height: 85px;
+}
+
+.headername{
+    text-shadow: 0.5px 0.5px 0.5px #c9c9c9;
+    font-weight: bold;
+}
+
+.headertitle{
+    text-shadow: 0.5px 0.5px 0.5px #c9c9c9;
+    font-weight: bold;
+}
