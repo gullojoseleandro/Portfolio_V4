@@ -4,9 +4,7 @@ const CVBody = ({ }) => {
     return (
         <>
             <div className="grid">
-                <div
-                    className="sidepage d-flex flex-column text-light py-4 px-2"
-                >
+                <div className="sidepage d-flex flex-column text-light py-4 px-2">
                     <div>
                         <h2 className="titles h2">Resumen</h2>
                         <hr className="separationline" />
@@ -47,7 +45,9 @@ const CVBody = ({ }) => {
                             <p className="m-1">• JAVA ➨ Spring - Hibernate - Struts</p>
                             <p className="m-1">• C# ➨ .NET</p>
                             <p className="m-1">• JS ➨ React - Vue</p>
-                            <p className="m-1">• HTML5 / CSS3 ➨ Bootstrap - Tailwind - Material Design</p>
+                            <p className="m-1">
+                                • HTML5 / CSS3 ➨ Bootstrap - Tailwind - Material Design
+                            </p>
                             <p className="m-1">
                                 • Databases ➨ MySQL - SQLServer - PostgreSQL (manejo general de
                                 bases de datos, tablas, creación de vistas, stored procedures)
@@ -64,7 +64,9 @@ const CVBody = ({ }) => {
                 </div>
                 <div className="container p-4 bg-light text-start">
                     <div className="mb-4">
-                        <h4 className="h4 mb-3 text-decoration-underline">Historial profesional</h4>
+                        <h4 className="h4 mb-3 text-decoration-underline">
+                            Historial profesional
+                        </h4>
                         <CVCards
                             title={"Desarrollador Full Stack"}
                             company={"DSV Air & Sea"}
@@ -126,25 +128,28 @@ const CVBody = ({ }) => {
                             content={
                                 <>
                                     <p className="m-1 p-0">
-                                        -Gestión efectiva de personal, liderando equipos para
-                                        garantizar la seguridad y el cumplimiento de los objetivos.
+                                        -Experto en monitoreo CCTV y seguimiento satelital vía GPS,
+                                        asegurando la vigilancia y el control efectivo de los
+                                        activos.
                                     </p>
                                     <p className="m-1 p-0">
-                                        -Destrezas en la gestión telefónica y atención al cliente,
-                                        brindando servicio excepcional y soluciones efectivas en
-                                        situaciones críticas.
+                                        -Amplia experiencia en la administración y control de
+                                        accesos, así como en la gestión de alarmas de incendio para
+                                        garantizar la seguridad de las instalaciones.
                                     </p>
                                     <p className="m-1 p-0">
                                         -Herramientas utilizadas: Milestone XProtect - Lenel Package
-                                        - Avigilon Control Center - plataformas de seguimiento
-                                        satelital (Hawk, LoJack) - paquete office
+                                        - plataformas de seguimiento satelital (Hawk) - paquete
+                                        office
                                     </p>
                                 </>
                             }
                         />
                     </div>
                     <div className="my-5">
-                        <h4 className="h4 mb-3 text-decoration-underline">Historial académico</h4>
+                        <h4 className="h4 mb-3 text-decoration-underline">
+                            Historial académico
+                        </h4>
                         <CVCards
                             title={"Tecnicatura superior universitaria en Programación"}
                             company={"Tec-Lab"}
