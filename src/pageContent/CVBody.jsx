@@ -1,14 +1,14 @@
 import CVCards from "../Components/Cards/jsx/CVCards";
 import "./css/CVBody.css";
-const CVBody = ({ }) => {
+const CVBody = () => {
     return (
         <>
             <div className="grid">
-                <div className="sidepage d-flex flex-column text-light py-4 px-2">
+                <div className="sidepage d-flex flex-column text-light px-2 py-2">
                     <div>
-                        <h2 className="titles h2">Resumen</h2>
-                        <hr className="separationline" />
-                        <div className="text-start fs-6">
+                        <h2 className="sidebartitles">Resumen</h2>
+                        <hr className="separationline"/>
+                        <div className="text-start">
                             <p>
                                 Programador Full Stack con sólidos conocimientos y capacidad de
                                 gestionar proyectos desde su concepción hasta su finalización.
@@ -20,7 +20,7 @@ const CVBody = ({ }) => {
                         </div>
                     </div>
                     <div>
-                        <h2 className="titles h2">Contacto</h2>
+                        <h2 className="sidebartitles">Contacto</h2>
                         <hr className="separationline" />
                         <div className="text-start">
                             <p>Dirección: 1032, CABA</p>
@@ -30,7 +30,7 @@ const CVBody = ({ }) => {
                         </div>
                     </div>
                     <div>
-                        <h2 className="titles h2">Idioma</h2>
+                        <h2 className="sidebartitles">Idioma</h2>
                         <hr className="separationline" />
                         <div className="text-start">
                             <p>• Español: Nativo</p>
@@ -38,7 +38,7 @@ const CVBody = ({ }) => {
                         </div>
                     </div>
                     <div>
-                        <h2 className="titles h2">Conocimientos</h2>
+                        <h2 className="sidebartitles">Conocimientos</h2>
                         <hr className="separationline" />
                         <div className="text-start">
                             <p className="m-1">• PHP</p>
@@ -62,11 +62,12 @@ const CVBody = ({ }) => {
                         </div>
                     </div>
                 </div>
-                <div className="container p-4 bg-light text-start">
-                    <div className="mb-4">
-                        <h4 className="h4 mb-3 text-decoration-underline">
+                <div className="bg-light text-start py-2 px-2">
+                    <div className="">
+                        <h2 className="text-center m-0">
                             Historial profesional
-                        </h4>
+                        </h2>
+                        <hr className="separationline"/>
                         <CVCards
                             title={"Desarrollador Full Stack"}
                             company={"DSV Air & Sea"}
@@ -147,9 +148,10 @@ const CVBody = ({ }) => {
                         />
                     </div>
                     <div className="my-5">
-                        <h4 className="h4 mb-3 text-decoration-underline">
+                        <h2 className="text-center m-0">
                             Historial académico
-                        </h4>
+                        </h2>
+                        <hr className="separationline"/>
                         <CVCards
                             title={"Tecnicatura superior universitaria en Programación"}
                             company={"Tec-Lab"}

@@ -1,5 +1,4 @@
 .grid {
-  height: 100dvh;
   display: grid;
   grid-template-columns: 3fr 7fr;
   margin: 0;
@@ -14,7 +13,7 @@
   margin: 0 0 15px 0;
 }
 
-.titles {
+.sidebartitles {
   margin: 0 !important;
   text-shadow: 2px 2px 2px #232323;
 }

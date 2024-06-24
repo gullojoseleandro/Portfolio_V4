@@ -4,7 +4,7 @@ import CVBody from "./CVBody";
 const CVHome = ({...props}) => {
     return(
         <>
-        <div className="container px-5">
+        <div className="container-lg container-md container-sm">
             <CVHeader headerusername={"Gullo José Leandro"} headerusertitle={"Desarrollador Full Stack"}/>
             <CVBody />
         </div>
