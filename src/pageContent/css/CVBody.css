@@ -16,8 +16,35 @@
 .sidebartitles {
   margin: 0 !important;
   text-shadow: 2px 2px 2px #232323;
+  font-size: calc(0.7rem + 1vw);
+}
+
+.jobtitle{
+  margin: 0 !important;
+  text-shadow: 2px 2px 2px #232323;
+  font-size: calc(0.7rem + 1vw);
+  color: rgba(63,113,143,255);
+}
+
+.sidebarcontent{
+  font-size: calc(0.3rem + 1vw);
 }
 
 .sidepage{
   background-color: rgba(63,113,143,255);
+}
+
+@media (min-width: 1201px) {
+
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {}
+
+@media (max-width: 768px) and (min-width: 481px) {}
+
+@media (max-width: 480px) {
+  .grid{
+    display: grid;
+    grid-template-columns: 45% 1fr;
+  }
 }

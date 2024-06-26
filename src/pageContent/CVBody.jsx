@@ -8,7 +8,7 @@ const CVBody = () => {
                     <div>
                         <h2 className="sidebartitles">Resumen</h2>
                         <hr className="separationline"/>
-                        <div className="text-start">
+                        <div className="sidebarcontent text-start">
                             <p>
                                 Programador Full Stack con sólidos conocimientos y capacidad de
                                 gestionar proyectos desde su concepción hasta su finalización.
@@ -22,7 +22,7 @@ const CVBody = () => {
                     <div>
                         <h2 className="sidebartitles">Contacto</h2>
                         <hr className="separationline" />
-                        <div className="text-start">
+                        <div className="sidebarcontent text-start">
                             <p>Dirección: 1032, CABA</p>
                             <p>Telefono: (3489)-594918</p>
                             <p>Email: leandrosec19@gmail.com</p>
@@ -32,7 +32,7 @@ const CVBody = () => {
                     <div>
                         <h2 className="sidebartitles">Idioma</h2>
                         <hr className="separationline" />
-                        <div className="text-start">
+                        <div className="sidebarcontent text-start">
                             <p>• Español: Nativo</p>
                             <p>• Ingles: B1</p>
                         </div>
@@ -40,7 +40,7 @@ const CVBody = () => {
                     <div>
                         <h2 className="sidebartitles">Conocimientos</h2>
                         <hr className="separationline" />
-                        <div className="text-start">
+                        <div className="sidebarcontent text-start">
                             <p className="m-1">• PHP</p>
                             <p className="m-1">• JAVA ➨ Spring - Hibernate - Struts</p>
                             <p className="m-1">• C# ➨ .NET</p>
@@ -64,7 +64,7 @@ const CVBody = () => {
                 </div>
                 <div className="bg-light text-start py-2 px-2">
                     <div className="">
-                        <h2 className="text-center m-0">
+                        <h2 className="jobtitle text-center m-0">
                             Historial profesional
                         </h2>
                         <hr className="separationline"/>
@@ -147,8 +147,8 @@ const CVBody = () => {
                             }
                         />
                     </div>
-                    <div className="my-5">
-                        <h2 className="text-center m-0">
+                    <div>
+                        <h2 className="jobtitle text-center m-0">
                             Historial académico
                         </h2>
                         <hr className="separationline"/>

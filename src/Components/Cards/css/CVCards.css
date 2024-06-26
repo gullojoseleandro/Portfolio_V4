@@ -1,4 +1,12 @@
-.cardtitles {
+.cardtitle {
     margin: 0 !important;
     text-shadow: 2px 2px 2px #c9c9c9;
+    font-size: calc(0.7rem + 1vw);
   }
+.cardcompany{
+  font-size: calc(0.3rem + 1vw);
+}
+
+.cardcontent{
+  font-size: calc(0.1rem + 1vw);
+}
