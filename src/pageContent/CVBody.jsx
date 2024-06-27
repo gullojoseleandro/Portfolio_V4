@@ -1,11 +1,12 @@
 import CVCards from "../Components/Cards/jsx/CVCards";
+import CVHeader from "../Components/Header/jsx/CVHeader";
 import "./css/CVBody.css";
 const CVBody = () => {
     return (
         <>
             <div className="grid">
-                <div className="sidepage d-flex flex-column text-light px-2 py-2">
-                    <div>
+                <div className="sidepage d-flex flex-column text-light border rounded-5">
+                    <div className="px-2 py-2">
                         <h2 className="sidebartitles">Resumen</h2>
                         <hr className="separationline"/>
                         <div className="sidebarcontent text-start">
@@ -19,7 +20,7 @@ const CVBody = () => {
                             </p>
                         </div>
                     </div>
-                    <div>
+                    <div className="px-2 py-2">
                         <h2 className="sidebartitles">Contacto</h2>
                         <hr className="separationline" />
                         <div className="sidebarcontent text-start">
@@ -29,7 +30,7 @@ const CVBody = () => {
                             <p>LinkedIn: @gullo-jose-leandro</p>
                         </div>
                     </div>
-                    <div>
+                    <div className="px-2 py-2">
                         <h2 className="sidebartitles">Idioma</h2>
                         <hr className="separationline" />
                         <div className="sidebarcontent text-start">
@@ -37,7 +38,7 @@ const CVBody = () => {
                             <p>• Ingles: B1</p>
                         </div>
                     </div>
-                    <div>
+                    <div className="px-2 py-2">
                         <h2 className="sidebartitles">Conocimientos</h2>
                         <hr className="separationline" />
                         <div className="sidebarcontent text-start">
@@ -62,8 +63,9 @@ const CVBody = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-light text-start py-2 px-2">
-                    <div className="">
+                <div className="d-flex flex-column text-start" style={{backgroundColor: "rgba(242, 187, 5, 0.1"}}>
+                    <CVHeader headerusername={"Gullo José Leandro"} headerusertitle={"Desarrollador Full Stack"}/>
+                    <div className="py-2 px-2">
                         <h2 className="jobtitle text-center m-0">
                             Historial profesional
                         </h2>

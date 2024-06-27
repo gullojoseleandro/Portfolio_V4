@@ -1,13 +1,12 @@
+import Logo from "../../../assets/pngwing.com.png";
 import "../css/CVHeader.css"
 
-const CVHeader = ({headerusername, headerusertitle}) => {
+const CVHeader = ({divclass, headerusername, headerusertitle}) => {
     return(
         <> 
-            <div className="cvheader">
-                <div className="py-2">
-                    <h1 className="headername text-light">{headerusername}</h1>
-                    <h7 className="headertitle text-light">{headerusertitle}</h7>
-                </div>
+            <div className={`cvheader d-flex flex-column justify-content-center text-center ${divclass}`}>
+                <h1 className="headername">{headerusername}</h1>
+                <h7 className="headertitle ">{headerusertitle}</h7>
             </div>
         </>
     );
