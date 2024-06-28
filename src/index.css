@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Aptos',  sans-serif;
+  font-family: 'Poppins', 'Aptos',  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
@@ -51,9 +51,4 @@ svg {
     scroll-behavior: auto !important;
     transition: none;
   }
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

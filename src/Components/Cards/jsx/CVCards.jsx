@@ -3,10 +3,10 @@ import '../css/CVCards.css'
 const CVCards = ({title, company, date, content}) => {
     return (
         <>
-            <div className="my-3">
-                <h4 className="cardtitles fw-bold">{title}</h4>
-                <h6 className="cardtitles fw-bold">{company} | {date}</h6>
-                <div className="lead fs-6">{content}</div>
+            <div className="my-2">
+                <h3 className="cardtitle fw-bold">{title}</h3>
+                <h6 className="cardcompany fw-bold">{company} | {date}</h6>
+                <div className='cardcontent'>{content}</div>
             </div>
         </>
     );
