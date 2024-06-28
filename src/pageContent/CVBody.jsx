@@ -160,7 +160,6 @@ const CVBody = ({ }) => {
                             title={"Licenciatura en Seguridad Informática"}
                             company={"Universidad Siglo XXI"}
                             date={"Mar. 2022 – Mar. 2026"}
-                            content={<p>Nivel: Universitario | Titulación: En curso</p>}
                         />
                         <CVCards
                             title={"Tecnicatura en Informática"}
