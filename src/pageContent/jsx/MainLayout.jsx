@@ -10,11 +10,11 @@ const MainLayout = () => {
             <div className="row justify-content-center align-items-center align-content-center hover-shadow" style={{ height: "100vh", backgroundImage: `url(${WoodsImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <div className="col-lg-6 col-md-6 col-sm-6 m-0 p-5">
                     <Link to="/cv">
-                        <HomeCards image={PortfolioImg} title={"Versión Curriculum Vitae."} />
+                        <HomeCards image={PortfolioImg} title={"Curriculum Vitae."} />
                     </Link>
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-6 m-0 p-0 p-5">
-                    <HomeCards image={ProgrammingImgTwo} title={"Versión WEB (Próximamente)."} />
+                    <HomeCards image={ProgrammingImgTwo} title={"Portafolio WEB (Próximamente)."} />
                 </div>
             </div>
         </div>
