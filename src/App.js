@@ -1,10 +1,11 @@
 import "./App.css";
-import CVHome from "./pageContent/CVHome";
+import HomePage from "./Pages/jsx/HomePage";
+
 
 function App() {
   return (
     <div className="App">
-      <CVHome />
+      <HomePage />
     </div>
   );
 }
