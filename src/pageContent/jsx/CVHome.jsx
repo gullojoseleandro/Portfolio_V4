@@ -5,14 +5,14 @@ import "./../css/CVHome.css";
 
 
 const CVHome = ({ ...props }) => {
-    
+
     const navigate = useNavigate();
 
     return (
         <>
             <div className="cvhome">
                 <CVBody />
-                <BasicButton Contained={"Volver"} href={"/"} />
+                <BasicButton Contained={"Volver"} href={"/"} buttonclass="fixed-button" />
             </div>
         </>
     );

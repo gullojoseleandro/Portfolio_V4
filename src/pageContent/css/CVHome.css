@@ -26,3 +26,10 @@
         padding: 0;
     }
   }
+
+  .fixed-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 16px;
+}
