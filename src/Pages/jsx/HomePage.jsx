@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/Home" element={<MainLayout />} />
+                <Route path="/" element={<MainLayout />} />
                 <Route path="/cv" element={<CVPage />} />
             </Routes>
         </Router>

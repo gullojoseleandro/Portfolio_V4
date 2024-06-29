@@ -12,7 +12,7 @@ const CVHome = ({ ...props }) => {
         <>
             <div className="cvhome">
                 <CVBody />
-                <BasicButton Contained={"Volver"} href={"/Home"} />
+                <BasicButton Contained={"Volver"} href={"/"} />
             </div>
         </>
     );
