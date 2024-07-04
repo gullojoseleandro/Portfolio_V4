@@ -5,7 +5,7 @@ const basename = "/PORTFOLIO-GULLO-JOSE-LEANDRO";
 const mainPage = "/Home";
 
 const mainRoutes = [
-  { path: "/Home", access: "Home", component: <HomePage /> },
+  { path: "/", access: "Home", component: <HomePage /> },
   { path: "/CV", access: "CV", component: <CVHome /> },
 ];
 
