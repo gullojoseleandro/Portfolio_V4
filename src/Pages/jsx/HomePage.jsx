@@ -1,16 +1,32 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import MainLayout from './../../pageContent/jsx/MainLayout';
-import CVPage from './../../pageContent/jsx/CVHome';
+import React, { lazy, Suspense } from "react";
+import ProgrammingImgTwo from "./../../assets/img/image_4_codigofondonegro.jpg";
+import PortfolioImg from "./../../assets/img/image_6.jpg";
+import MainLayout from "pageContent/jsx/MainLayout";
+import backgroundImage from "./../../assets/img/image_7.jpg";
+
+const LazyCard = lazy(() => import("../../Components/Cards/jsx/HomeCards.jsx"));
 
 const HomePage = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<MainLayout />} />
-                <Route path="/cv" element={<CVPage />} />
-            </Routes>
-        </Router>
+        <>
+            <Suspense fallback={<span> ...Loading </span>}>
+                <MainLayout
+                    backgroundImage={backgroundImage}
+                    firstCard={
+                        <LazyCard 
+                            title={"Curriculum Vitae."} 
+                            image={PortfolioImg} />
+                    }
+                    secondCard={
+                        <LazyCard
+                            title={"Portafolio WEB (Proximamente)"}
+                            image={ProgrammingImgTwo}
+                        />
+                    }
+                />
+            </Suspense>
+        </>
     );
-}
+};
 
 export default HomePage;

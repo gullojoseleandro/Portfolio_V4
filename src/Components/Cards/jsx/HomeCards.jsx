@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function ActionAreaCard({ image, title, content, ...props }) {
+export default function ActionAreaCard({ image, title, ...props }) {
     return (
         <Card className='p-0 m-0 border rounded-5' sx={{ maxHeight: "auto"}}>
             <CardActionArea sx={{color: "skyblue"}}>
