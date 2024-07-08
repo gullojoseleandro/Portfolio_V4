@@ -11,7 +11,7 @@ const CVHome = ({ ...props }) => {
         <>
             <div className="cvhome">
                 {memoBody}
-                <BasicButton Contained={"Volver"} href={"/PORTFOLIO-GULLO-JOSE-LEANDRO/Home"} buttonclass="fixed-button" />
+                <BasicButton Contained={"Volver"} href={"/"} buttonclass="fixed-button" />
             </div>
         </>
     );

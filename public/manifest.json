@@ -1,9 +1,9 @@
 {
-  "short_name": "portfolio - gullo jose leandro",
+  "short_name": "portfolio_2024",
   "name": "portfolio - gullo jose leandro",
-
-  "start_url": "/PORTFOLIO-GULLO-JOSE-LEANDRO",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "A portfolio website for Gullo Jose Leandro"
 }

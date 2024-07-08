@@ -9,9 +9,9 @@ import routes from "./../js/routes";
 
 const RoutesHandle = () => {
     return (
-        <Router basename={routes.basename}>
+        <Router>
             <Routes>
-                <Route path="/" element={<Navigate replace to={routes.mainPage} />} />
+                {/* Rutas principales */}
                 {routes.mainRoutes.map((mainRoute) => (
                     <Route
                         key={mainRoute.path}
@@ -19,7 +19,6 @@ const RoutesHandle = () => {
                         element={mainRoute.component}
                     />
                 ))}
-                ;
             </Routes>
         </Router>
     );
