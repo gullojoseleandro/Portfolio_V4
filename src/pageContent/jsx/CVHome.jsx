@@ -1,17 +1,16 @@
 import CVBody from "./CVBody";
 import BasicButton from "../../Components/Buttons/jsx/BasicButton";
-import { useNavigate } from 'react-router-dom';
 import "./../css/CVHome.css";
-
+import { useMemo } from "react";
 
 const CVHome = ({ ...props }) => {
 
-    const navigate = useNavigate();
+    const memoBody = useMemo(() => <CVBody />, []);
 
     return (
         <>
             <div className="cvhome">
-                <CVBody />
+                {memoBody}
                 <BasicButton Contained={"Volver"} href={"/"} buttonclass="fixed-button" />
             </div>
         </>
