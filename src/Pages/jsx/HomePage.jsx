@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import ProgrammingImgTwo from "./../../assets/img/image_4_codigofondonegro.jpg";
 import PortfolioImg from "./../../assets/img/image_6.jpg";
-import MainLayout from "pageContent/jsx/MainLayout";
+import MainLayout from "layouts/jsx/MainLayout";
 import backgroundImage from "./../../assets/img/image_7.jpg";
 
 const LazyCard = lazy(() => import("../../Components/Cards/jsx/HomeCards.jsx"));
