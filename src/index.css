@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap');
+
 body {
   margin: 0;
-  font-family: 'Poppins', 'Aptos',  sans-serif;
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
@@ -8,6 +10,7 @@ body {
 * {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 *,
 *::before,
