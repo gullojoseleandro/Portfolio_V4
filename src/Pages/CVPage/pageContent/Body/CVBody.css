@@ -1,0 +1,54 @@
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  margin: 0;
+  padding: 0;
+}
+
+.separationline {
+  border: none;
+  opacity: 100%;
+  height: 2px;
+  background-color: #f2bb05;
+  margin: 0 0 15px 0;
+}
+
+.sidebartitles {
+  margin: 0 !important;
+  text-shadow: 1px 1px 1px #c9c9c9;
+  font-size: calc(0.7rem + 1vw);
+  color: #f2bb05;
+}
+
+.jobtitle{
+  margin: 0 !important;
+  text-shadow: 1px 1px 1px #c9c9c9;
+  font-size: calc(0.7rem + 1vw);
+  color: #14192d;
+}
+
+.sidebarcontent{
+  font-size: calc(0.3rem + 1vw);
+}
+
+.sidepage{
+  background-color: #14192d;
+}
+
+@media (min-width: 1201px) {
+
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {}
+
+@media (max-width: 768px) and (min-width: 481px) {}
+
+@media (max-width: 480px) and (min-width: 321px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    margin: 0;
+    padding: 0;
+  }
+}
+
