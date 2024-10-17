@@ -1,6 +1,7 @@
-import CVCards from "../../Components/Cards/jsx/CVCards";
-import CVHeader from "../../Components/Header/jsx/CVHeader";
-import "./../css/CVBody.css";
+import CVCards from "../../Components/Cards/CVCards";
+
+import "./CVBody.css";
+
 const CVBody = () => {
   return (
     <>
@@ -67,10 +68,6 @@ const CVBody = () => {
           className="d-flex flex-column text-start"
           style={{ backgroundColor: "rgba(242, 187, 5, 0.1" }}
         >
-          <CVHeader
-            headerusername={"Gullo José Leandro"}
-            headerusertitle={"Desarrollador Full Stack"}
-          />
           <div className="py-2 px-2">
             <h2 className="jobtitle text-center m-0">Historial profesional</h2>
             <hr className="separationline" />
