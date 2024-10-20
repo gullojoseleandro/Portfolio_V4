@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MUICard from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import NoImage from 'assets/img/no-image.jpeg';
@@ -27,7 +26,6 @@ const getAnimation = (activeWidth) => {
 const Card = ({ ...props }) => {
     const { image, title, content } = props;
     const activeWidth = useWindowWidth();
-    const activeHeight = useWindowHeight();
 
     const animationStyle = {
         animation: `${getAnimation(activeWidth)} ${getRandomDuration()} ease-in-out infinite alternate`,
