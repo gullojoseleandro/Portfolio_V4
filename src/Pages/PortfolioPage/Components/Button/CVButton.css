@@ -1,0 +1,29 @@
+.cv-button {
+    background-color: #FFBA08;
+    color: #03071E;
+    font-size: 0.875rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.4s, transform 0.4s, box-shadow 0.4s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cv-button.active {
+    background-color: rgb(190, 38, 33);
+    color: #FFBA08;
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cv-button-text {
+    margin: 0; 
+    padding: 0;
+    transition: color 0.4s;
+    font-weight: bold;
+}
