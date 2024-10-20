@@ -8,7 +8,7 @@ const mainPage = "/Home";
 const mainRoutes = [
   { path: "/", access: "Home", component: <HomePage /> },
   { path: "/CV", access: "CV", component: <CVHome /> },
-  { path: "/PORTFOLIO", access: "PORTFOLIO", component: <PortfolioPage /> },
+  { path: "/PORTFOLIO", access: "PORTFOLIO", component: <PortfolioPage /> },  
 ];
 
 const routes = { mainRoutes, mainPage };
