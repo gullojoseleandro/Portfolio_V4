@@ -3,7 +3,6 @@ import Typography from '@mui/material/Typography';
 import NoImage from 'assets/img/no-image.jpeg';
 import SimpleSeparationLine from 'Components/Bars/SimpleSeparationLine';
 import useWindowWidth from 'Hooks/useWindowWidth';
-import useWindowHeight from 'Hooks/useWindowHeight';
 
 import "./Card.css"
 
