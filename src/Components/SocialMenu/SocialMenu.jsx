@@ -20,7 +20,7 @@ const icons = [
     }
 ];
 
-export const SocialMenu = () => {
+const SocialMenu = () => {
     const [activeIndex, setActiveIndex] = useState(null);
     return (
         <>
@@ -44,3 +44,5 @@ export const SocialMenu = () => {
         </>
     )
 }
+
+export default SocialMenu;
