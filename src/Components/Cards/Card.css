@@ -1,0 +1,17 @@
+@keyframes moveSideways {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(3px);
+    }
+}
+
+@keyframes moveUpwards {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
