@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
 export default function ActionAreaCard({ image, title, ...props }) {
