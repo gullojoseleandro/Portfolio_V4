@@ -30,6 +30,7 @@ const SocialMenu = () => {
                 {icons.map((icon, index) => (
                     <a
                         key={index}
+                        aria-label={icon.alt}
                         alt={icon.alt}
                         href={icon.href}
                         target="_blank"
