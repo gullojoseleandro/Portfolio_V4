@@ -10,9 +10,9 @@ export default function ActionAreaCard({ image, title, ...props }) {
                 <div style={{ position: 'relative', overflow: 'hidden' }}>
                     <img src={image} alt="card" style={{ filter: 'brightness(20%)' }} />
                     <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white' }}>
-                        <Typography variant="h3" component="h3" align="center" sx={{fontSize: "calc(0.5rem + 1vw)"}}>
+                        <h6 align="center" sx={{fontSize: "calc(0.5rem + 1vw)"}}>
                             {title}
-                        </Typography>
+                        </h6>
                     </div>
                 </div>
             </CardActionArea>
