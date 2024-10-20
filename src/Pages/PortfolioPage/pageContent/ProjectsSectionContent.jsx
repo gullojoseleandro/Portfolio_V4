@@ -1,4 +1,3 @@
-import React, { act } from 'react';
 import Card from '../../../Components/Cards/Card';
 import OldPortfolio from '../../../assets/img/OldPortfolio.png';
 import Slider from "react-slick";
