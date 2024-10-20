@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '../../../Components/Cards/Card';
-import image from '../../../assets/img/image_6.webp';
 import OldPortfolio from '../../../assets/img/OldPortfolio.png';
 import Slider from "react-slick";
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
