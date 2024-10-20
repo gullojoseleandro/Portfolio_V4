@@ -93,14 +93,14 @@ const Card = ({ ...props }) => {
                     style={{ backgroundColor: 'transparent' }}
                 >
                     <Typography
-                        align="start"
+                        align="left"
                         className="text-light"
                         sx={{ fontSize: "calc(0.9rem + 1vw)", textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' }}
                     >
                         {title}
                     </Typography>
                     <Typography
-                        align="start"
+                        align="left"
                         sx={{ fontSize: activeWidth > 768 ? "calc(0.4rem + 1vw)" : "calc(0.6rem + 1vw)", color: '#FFBA08' }}
                     >
                         {content}
