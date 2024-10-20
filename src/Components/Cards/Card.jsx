@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import NoImage from 'assets/img/no-image.jpeg';
 import SimpleSeparationLine from 'Components/Bars/SimpleSeparationLine';
 import useWindowWidth from 'Hooks/useWindowWidth';
+import useWindowHeight from 'Hooks/useWindowHeight';
 
 import "./Card.css"
 
@@ -26,6 +27,7 @@ const getAnimation = (activeWidth) => {
 const Card = ({ ...props }) => {
     const { image, title, content } = props;
     const activeWidth = useWindowWidth();
+    const activeHeight = useWindowHeight();
 
     const animationStyle = {
         animation: `${getAnimation(activeWidth)} ${getRandomDuration()} ease-in-out infinite alternate`,
@@ -45,7 +47,9 @@ const Card = ({ ...props }) => {
     });
 
     return (
-        <section className="d-flex flex-column align-items-center justify-content-center text-center m-3" style={{ height: activeWidth > 768 ? "400px" : "350px" }}>
+        <section 
+            className="d-flex flex-column align-items-center justify-content-center text-center m-3" 
+            style={{ height: activeWidth > 768 ? "400px" : "350px" }}>
             <MUICard
                 className="p-0 m-0 border rounded-5 shadow hover-shadow h-100"
                 sx={{
@@ -54,9 +58,6 @@ const Card = ({ ...props }) => {
                     overflow: "hidden",
                     transition: 'transform 0.2s ease-in-out',
                     ...animationStyle,
-                    '&:hover': {
-                        transform: 'scale(1.05)',
-                    },
                 }}
             >
                 <header className="d-flex m-3 gap-2" style={{ height: "3%" }}>
@@ -95,13 +96,13 @@ const Card = ({ ...props }) => {
                     <Typography
                         align="left"
                         className="text-light"
-                        sx={{ fontSize: "calc(0.9rem + 1vw)", textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' }}
+                        sx={{ fontSize: "calc(0.6rem + 1vw)", textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' }}
                     >
                         {title}
                     </Typography>
                     <Typography
                         align="left"
-                        sx={{ fontSize: activeWidth > 768 ? "calc(0.4rem + 1vw)" : "calc(0.6rem + 1vw)", color: '#FFBA08' }}
+                        sx={{ fontSize: activeWidth > 768 ? "calc(0.4rem + 0.6vw)" : "calc(0.6rem + 1vw)", color: '#FFBA08' }}
                     >
                         {content}
                     </Typography>
