@@ -1,4 +1,3 @@
-import zIndex from '@mui/material/styles/zIndex';
 import React, { useState, useCallback, useMemo } from 'react';
 
 export const Footer = () => {
