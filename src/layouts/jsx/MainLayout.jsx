@@ -4,9 +4,10 @@ const MainLayout = ({ backgroundImage, content }) => {
     return (
         <main
             style={{
-                height: "100dvh",
+                height: "100vh",
                 position: "relative",
-                overflow: "hidden"
+                overflow: "hidden",
+                userSelect: "none"
             }}
         >
             <div
@@ -17,13 +18,11 @@ const MainLayout = ({ backgroundImage, content }) => {
                     right: 0,
                     bottom: 0,
                     backgroundImage: `url(${backgroundImage})`,
-                    backgroundSize: "cover",
                     backgroundPosition: "center",
                     filter: "blur(2px)",
                     zIndex: -1
                 }}
             ></div>
-
             {content}
         </main>
     );
