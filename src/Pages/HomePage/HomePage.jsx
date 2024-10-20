@@ -57,12 +57,12 @@ const HomePage = () => {
                         </header>
                         <section className="row h-75 align-items-center">
                             <article className="col-lg-6 col-md-6 col-sm-6 m-0 p-5">
-                                <Link to="/CV">
+                                <Link to="/CVPage">
                                     {firstCard}
                                 </Link>
                             </article>
                             <article className="col-lg-6 col-md-6 col-sm-6 m-0 p-0 p-5">
-                                <Link to="/Portfolio">
+                                <Link to="/PortfolioPage">
                                     {secondCard}
                                 </Link>
                             </article>
