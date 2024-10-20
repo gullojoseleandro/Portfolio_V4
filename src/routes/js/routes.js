@@ -1,14 +1,15 @@
-import CVHome from "./../../pageContent/jsx/CVHome.jsx";
-import HomePage from "./../../Pages/jsx/HomePage.jsx";
+import CVHome from "../../Pages/CVPage/CVPage.jsx";
+import HomePage from "../../Pages/HomePage/HomePage.jsx";
+import PortfolioPage from "../../Pages/PortfolioPage/PortfolioPage.jsx";
 
-// const basename = "/PORTFOLIO-GULLO-JOSE-LEANDRO";
-const mainPage = "/Home";
+// const basename = "/portfolio_2024";
 
 const mainRoutes = [
-  { path: "/", access: "Home", component: <HomePage /> },
-  { path: "/CV", access: "CV", component: <CVHome /> },
+  { path: "/HomePage", access: "HomePage", component: <HomePage /> },
+  { path: "/CVPage", access: "CVPage", component: <CVHome /> },
+  { path: "/PortfolioPage", access: "PortfolioPage", component: <PortfolioPage /> },  
 ];
 
-const routes = { mainRoutes, mainPage };
+const routes = { mainRoutes, mainPage: '/HomePage' };
 
 export default routes;

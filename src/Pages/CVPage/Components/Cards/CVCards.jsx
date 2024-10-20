@@ -1,4 +1,4 @@
-import '../css/CVCards.css'
+import './CVCards.css'
 
 const CVCards = ({title, company, date, content}) => {
     return (

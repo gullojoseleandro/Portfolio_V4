@@ -1,17 +1,23 @@
+import { useState, useEffect } from "react";
 import {
     BrowserRouter as Router,
     Routes,
     Route,
-    Navigate,
+    Navigate 
 } from "react-router-dom";
 
 import routes from "./../js/routes";
 
 const RoutesHandle = () => {
+    const [mainPage] = useState(routes.mainPage);
+
     return (
         <Router>
             <Routes>
-                {/* Rutas principales */}
+                <Route
+                    path="/"
+                    element={<Navigate replace to={mainPage} />}
+                />
                 {routes.mainRoutes.map((mainRoute) => (
                     <Route
                         key={mainRoute.path}
