@@ -1,14 +1,15 @@
 import React, { lazy, Suspense } from "react";
 import { Link } from 'react-router-dom';
-import { SocialMenu } from 'Components/SocialMenu/SocialMenu';
+import SocialMenu from "./../../Components/SocialMenu/SocialMenu";
 import MainLayout from "layouts/jsx/MainLayout";
 
 import CurriculumImg from "./../../assets/img/image_4_codigofondonegro.webp";
 import PortfolioImg from "./../../assets/img/image_6.webp";
 import backgroundImage from "./../../assets/img/image_7.webp";
 
-import "./HomePage.css";
 import SimpleSeparationLine from "Components/Bars/SimpleSeparationLine";
+
+import "./HomePage.css";
 
 const LazyCard = lazy(() =>
     new Promise(resolve => {
@@ -50,11 +51,11 @@ const HomePage = () => {
                 content=
                 {
                     <>
-                        <header style={{ backgroundColor: "rgb(3, 7, 30, 0.1)"}}>
+                        <header style={{ backgroundColor: "rgb(3, 7, 30, 0.1)" }}>
                             <SocialMenu />
+                            <SimpleSeparationLine />
                         </header>
-                        <SimpleSeparationLine/>
-                        <section className="row pt-4">
+                        <section className="row h-75 align-items-center">
                             <article className="col-lg-6 col-md-6 col-sm-6 m-0 p-5">
                                 <Link to="/CV">
                                     {firstCard}
