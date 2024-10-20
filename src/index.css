@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap');
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto/RobotoSlab-VariableFont_wght.ttf') format('truetype');   
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('./assets/fonts/Baskerville/LibreBaskerville-Bold.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   margin: 0;
@@ -25,8 +36,15 @@ select {
   font: inherit;
 }
 
+li {
+  text-wrap: balance;
+  font-family: sans-serif;
+}
+
 p {
   text-wrap: pretty;
+  font-family: sans-serif;
+
 }
 h1,
 h2,
@@ -35,6 +53,7 @@ h4,
 h5,
 h6 {
   text-wrap: balance;
+  font-family: "Roboto", serif;
 }
 
 img,
