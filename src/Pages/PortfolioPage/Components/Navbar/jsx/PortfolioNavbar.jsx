@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faBars, faTimes, faHome, faProjectDiagram, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import HomeSectionContent from "Pages/PortfolioPage/pageContent/HomeSectionContent";
 import ProjectsSectionContent from "Pages/PortfolioPage/pageContent/ProjectsSectionContent";
+import AOS from 'aos'; // Asegúrate de haber importado AOS
 
 import "./PortfolioNavbar.css";
 
@@ -40,38 +41,89 @@ const navLinks = [
 ];
 
 const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
-    const [activeWidth, setActiveWidth] = useState(window.innerWidth);
     const [activeButton, setActiveButton] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [isClosing, setIsClosing] = useState(false);
 
-    const handleToggleButtons = () => {
-        setActiveButton(!activeButton);
-    };
+    const isDesktopView = window.innerWidth > 768;
 
-    useEffect(() => {
-        const handleResize = () => {
-            setActiveWidth(window.innerWidth);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const handleToggleButtons = useCallback(() => {
+        setActiveButton(prev => !prev);
+        if (!activeButton) {
+            AOS.refresh();
+        }
+    }, [activeButton]);
+
+    const handleNavLinkClick = useCallback((index, section) => {
+        setActiveIndex(index);
+        setActiveSection(section);
+        setHoveredIndex(null);
+        if (!isDesktopView) {
+            setIsClosing(true);
+            setTimeout(() => {
+                setActiveButton(false);
+                setIsClosing(false);
+            }, 300);
+        }
+    }, [setActiveIndex, setActiveSection, isDesktopView]);
+
+    const renderedNavLinks = useMemo(() => (
+        navLinks.map((link, index) => (
+            <button
+                key={index}
+                className="d-flex align-items-center justify-content-center gap-2 p-2 rounded-3"
+                style={{
+                    backgroundColor: activeIndex === index ? "rgba(190, 38, 33, 0.7)" : "rgba(255, 186, 8, 1)",
+                    borderRadius: "8px",
+                    padding: "15px",
+                    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+                onClick={() => handleNavLinkClick(index, link.section)}
+                onMouseEnter={() => { if (link.state) setHoveredIndex(index); }}
+                onMouseLeave={() => setHoveredIndex(null)}
+            >
+                <FontAwesomeIcon icon={link.icon} style={{ marginRight: '8px', color: activeIndex === index ? "#FFF" : "#000" }} />
+                <p className="p-0 m-0" style={{ color: activeIndex === index ? "#FFF" : "#000" }}>{link.label}</p>
+                {link.state && hoveredIndex === index && (
+                    <div
+                        style={{
+                            position: "absolute",
+                            top: "100%",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            backgroundColor: "#FFBA08",
+                            color: "#000",
+                            padding: "5px 10px",
+                            borderRadius: "5px",
+                            fontSize: "0.8rem",
+                            whiteSpace: "nowrap",
+                            zIndex: 10,
+                        }}
+                    >
+                        {"In Construction"}
+                    </div>
+                )}
+            </button>
+        ))
+    ), [activeIndex, hoveredIndex, handleNavLinkClick]);
 
     return (
         <nav className="navbar navbar-expand-lg fixed-top d-flex justify-content-between align-items-center bg-transparent" style={{ userSelect: "none", padding: "10px 20px" }}>
             <section className="container-fluid">
                 <section className="navbar-brand d-flex align-items-center gap-2" style={{ boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
                     <FontAwesomeIcon size="2x" icon={faCode} color="#FFBA08" />
-                    <h1 className="fw-bold" style={{ color: "#FFBA08", fontSize: "1.5rem" }}>JLG</h1>
+                    <p className="fw-bold m-0 p-0" style={{ color: "#FFBA08", fontSize: "1.5rem" }}>JLG</p>
                 </section>
-                {activeWidth > 768 ? (
+                {isDesktopView ? (
                     <section>
-                        <div className="d-flex mt-3 gap-3">
+                        <div className="d-flex mt-3 gap-1">
                             {navLinks.map((link, index) => (
                                 <button
                                     key={index}
-                                    className="d-flex align-items-center justify-content-center gap-2 p-2 rounded-3"
+                                    className="d-flex align-items-center justify-content-center gap-1 p-2 rounded-3"
                                     style={{
                                         backgroundColor: activeIndex === index ? "rgba(190, 38, 33, 0.4)" : "transparent",
                                         border: "2px solid #FFBA08",
@@ -80,7 +132,6 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                                         width: "150px",
                                         borderRadius: "8px",
                                         position: "relative",
-                                        padding: "10px 15px",
                                     }}
                                     onClick={() => { setActiveIndex(index); setActiveSection(link.section); }}
                                     onMouseEnter={() => { if (link.state) setHoveredIndex(index); }}
@@ -122,37 +173,22 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                             <FontAwesomeIcon icon={activeButton ? faTimes : faBars} size="3x" style={{ color: "#FFBA08", transition: "transform 0.3s" }} />
                         </button>
                         {activeButton && (
-                            <div className="d-flex flex-column gap-2" style={{
-                                listStyle: "none",
-                                cursor: "pointer",
-                                position: "absolute",
-                                width: "40%",
-                                top: "70px",
-                                right: "15px",
-                                backgroundColor: "rgba(255, 186, 8, 0.3)",
-                                borderRadius: "8px",
-                                padding: "10px",
-                                zIndex: 1000,
-                            }}>
-                                {navLinks.map((link, index) => (
-                                    <button
-                                        key={index}
-                                        className={`btn text-center rounded-3 button-fade-in ${activeButton ? 'active' : ''}`}
-                                        style={{
-                                            backgroundColor: activeIndex === index ? "rgba(190, 38, 33, 0.7)" : "rgba(255, 186, 8, 1)",
-                                            borderRadius: "8px",
-                                            padding: "15px",
-                                            boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                        }}
-                                        onClick={() => { setActiveIndex(index); setActiveSection(link.section); setActiveButton(false); }}
-                                    >
-                                        <FontAwesomeIcon icon={link.icon} style={{ marginRight: '8px', color: activeIndex === index ? "#FFF" : "#000" }} />
-                                        <p className="p-0 m-0" style={{ color: activeIndex === index ? "#FFF" : "#000" }}>{link.label}</p>
-                                    </button>
-                                ))}
+                            <div
+                                data-aos={isClosing ? "fade-up" : "fade-down"}
+                                className={`d-flex flex-column gap-2`}
+                                style={{
+                                    listStyle: "none",
+                                    cursor: "pointer",
+                                    position: "absolute",
+                                    width: "40%",
+                                    top: "70px",
+                                    right: "15px",
+                                    backgroundColor: "rgba(255, 186, 8, 0.3)",
+                                    borderRadius: "8px",
+                                    padding: "10px",
+                                    zIndex: 1000,
+                                }}>
+                                {renderedNavLinks}
                             </div>
                         )}
                     </>
