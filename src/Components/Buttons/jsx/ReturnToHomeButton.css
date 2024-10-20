@@ -1,0 +1,37 @@
+.return-home-button {
+    position: fixed; 
+    bottom: 70px; 
+    right: 20px; 
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: #FFBA08 solid 2px;
+    background: rgba(190, 38, 33, 0.4);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none; 
+    z-index: 1000; 
+}
+
+.return-home-button.hovered {
+    transform: scale(1.2);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+    color: black;
+    margin-bottom: 4px;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: black;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
