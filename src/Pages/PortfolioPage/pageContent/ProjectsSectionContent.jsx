@@ -93,8 +93,6 @@ const ProjectsSectionContent = () => {
                             title={project.title}  
                             content={project.content}
                             image={project.image}
-                            socialIcons={true}
-                            icons={icons}
                         />
                     ))
                 )}
