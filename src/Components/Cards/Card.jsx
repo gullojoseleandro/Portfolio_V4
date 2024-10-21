@@ -49,7 +49,7 @@ const Card = ({ image, title, content }) => {
                 sx={{
                     width: activeWidth > 768 ? (activeWidth < 1024 ? "300px" : "470px") : "100%",
                     backgroundColor: 'transparent',
-                    overflow: activeWidth > 768 ? "" : "auto",
+                    overflow: activeWidth > 768 ? "" : "hiden",
                     transition: 'transform 0.2s ease-in-out',
                     ...animationStyle,
                 }}
