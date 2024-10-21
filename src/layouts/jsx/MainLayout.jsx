@@ -1,10 +1,12 @@
 import React from 'react';
+import useWindowWidth from 'Hooks/useWindowWidth';
 
 const MainLayout = ({ backgroundImage, content }) => {
+    const activeWidth = useWindowWidth();
     return (
         <main
             style={{
-                height: "100vh",
+                height: activeWidth > 768 ? "100vh" : "100dvh",
                 position: "relative",
                 overflow: "hidden",
                 userSelect: "none"
