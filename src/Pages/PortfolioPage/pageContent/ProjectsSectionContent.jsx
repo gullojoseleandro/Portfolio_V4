@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import Card from '../../../Components/Cards/Card';
-import OldPortfolio from '../../../assets/img/OldPortfolio.png';
 import Slider from "react-slick";
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +8,8 @@ import useWindowHeight from 'Hooks/useWindowHeight';
 
 const projects = [
     {
-        title: "Mi antiguo portfolio",
-        content: "Realizado con HTML5, CSS3 y JavaScript vanilla.",
-        image: OldPortfolio,
+        title: "Proyecto X",
+        content: "En construcción.",
     },
     {
         title: "Proyecto X",
@@ -54,7 +52,7 @@ const ProjectsSectionContent = () => {
 
     const settings = {
         dots: true,
-        infinite: false,
+        infinite: true,
         arrows: true,
         speed: 500,
         slidesToShow,
@@ -64,10 +62,11 @@ const ProjectsSectionContent = () => {
     return (
         <section className="d-flex align-items-center justify-content-center h-100">
             <div 
-                className={`${activeWidth > 768 ? "row align-items-center" : "w-100 mb-5"}`} 
+                className={`${activeWidth > 768 ? "row align-items-center w-100 p-4" : "w-100 mb-5"}`} 
                 style={{ width: "90%", height: "600px", overflow: activeWidth > 768 ? "hidden" : "auto" }}
             >
                 {activeWidth > 768 ? (
+                    <div className={"container-fluid"}>
                     <Slider {...settings}>
                         {projects.map((project, index) => (
                             <div
@@ -86,6 +85,7 @@ const ProjectsSectionContent = () => {
                             </div>
                         ))}
                     </Slider>
+                </div>
                 ) : (
                     projects.map((project, index) => (
                         <Card
