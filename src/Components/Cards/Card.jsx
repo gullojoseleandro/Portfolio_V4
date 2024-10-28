@@ -45,11 +45,11 @@ const Card = ({ image, title, content }) => {
         <section className="d-flex flex-column align-items-center justify-content-center text-center m-3"
             style={{ height: activeWidth > 768 ? "400px" : "350px" }}>
             <MUICard
-                className="p-0 m-0 border rounded-5 shadow hover-shadow h-100"
+                className="Card p-0 m-0 border rounded-5 shadow h-100"
                 sx={{
                     width: activeWidth > 768 ? (activeWidth < 1024 ? "300px" : "470px") : "100%",
                     backgroundColor: 'transparent',
-                    overflow: activeWidth > 768 ? "" : "hiden",
+                    overflow: activeWidth > 768 ? "" : "hidden",
                     transition: 'transform 0.2s ease-in-out',
                     ...animationStyle,
                 }}
