@@ -3,50 +3,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faBars, faTimes, faHome, faProjectDiagram, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
 import HomeSectionContent from "Pages/PortfolioPage/pageContent/HomeSectionContent";
 import ProjectsSectionContent from "Pages/PortfolioPage/pageContent/ProjectsSectionContent";
-import AOS from 'aos'; // Asegúrate de haber importado AOS
+import ContactsSectionContent from "Pages/PortfolioPage/pageContent/ContactsSectionContent";
+import AOS from 'aos';
+import useWindowWidth from "Hooks/useWindowWidth";
 
 import "./PortfolioNavbar.css";
+import AboutMe from "Pages/PortfolioPage/pageContent/AboutMe";
 
-const navLinks = [
-    {
-        label: "Inicio",
-        href: "#inicio",
-        section: <HomeSectionContent />,
-        index: 0,
-        state: false,
-        icon: faHome,
-    },
-    {
-        label: "Proyectos",
-        href: "#proyectos",
-        section: <ProjectsSectionContent />,
-        index: 1,
-        state: false,
-        icon: faProjectDiagram,
-    },
-    {
-        label: "Contacto",
-        href: "#contacto",
-        index: 2,
-        state: true,
-        icon: faEnvelope,
-    },
-    {
-        label: "Sobre Mi",
-        href: "#sobremi",
-        index: 3,
-        state: true,
-        icon: faUser,
-    },
-];
 
 const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
     const [activeButton, setActiveButton] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [isClosing, setIsClosing] = useState(false);
+    const activeWidth = useWindowWidth();
 
-    const isDesktopView = window.innerWidth > 768;
-
+    const navLinks = [
+        {
+            label: "Inicio",
+            href: "#inicio",
+            section: <HomeSectionContent setActiveSection={setActiveSection}/>,
+            index: 0,
+            state: false,
+            icon: faHome,
+        },
+        {
+            label: "Proyectos",
+            href: "#proyectos",
+            section: <ProjectsSectionContent />,
+            index: 1,
+            state: false,
+            icon: faProjectDiagram,
+        },
+        {
+            label: "Contacto",
+            href: "#contacto",
+            section: <ContactsSectionContent />,
+            index: 2,
+            state: true,
+            icon: faEnvelope,
+        },
+        {
+            label: "Sobre Mi",
+            href: "#sobremi",
+            section: <AboutMe />,
+            index: 3,
+            state: true,
+            icon: faUser,
+        },
+    ];
+    
     const handleToggleButtons = useCallback(() => {
         setActiveButton(prev => !prev);
         if (!activeButton) {
@@ -58,14 +63,14 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
         setActiveIndex(index);
         setActiveSection(section);
         setHoveredIndex(null);
-        if (!isDesktopView) {
+        if (activeWidth <= 768) {
             setIsClosing(true);
             setTimeout(() => {
                 setActiveButton(false);
                 setIsClosing(false);
             }, 300);
         }
-    }, [setActiveIndex, setActiveSection, isDesktopView]);
+    }, [setActiveIndex, setActiveSection, activeWidth]);
 
     const renderedNavLinks = useMemo(() => (
         navLinks.map((link, index) => (
@@ -111,13 +116,13 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
     ), [activeIndex, hoveredIndex, handleNavLinkClick]);
 
     return (
-        <nav className="navbar navbar-expand-lg fixed-top d-flex justify-content-between align-items-center bg-transparent" style={{ userSelect: "none", padding: "10px 20px" }}>
+        <nav className="navbar fixed-top d-flex justify-content-between align-items-center" style={{ userSelect: "none", padding: "10px 20px" }}>
             <section className="container-fluid">
                 <section className="navbar-brand d-flex align-items-center gap-2" style={{ boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)" }}>
                     <FontAwesomeIcon size="2x" icon={faCode} color="#FFBA08" />
                     <p className="fw-bold m-0 p-0" style={{ color: "#FFBA08", fontSize: "1.5rem" }}>JLG</p>
                 </section>
-                {isDesktopView ? (
+                {activeWidth > 768 ? (
                     <section>
                         <div className="d-flex mt-3 gap-1">
                             {navLinks.map((link, index) => (
