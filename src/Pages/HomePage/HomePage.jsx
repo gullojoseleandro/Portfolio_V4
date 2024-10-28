@@ -5,7 +5,7 @@ import MainLayout from "layouts/jsx/MainLayout";
 import CurriculumImg from "./../../assets/img/image_4_codigofondonegro.webp";
 import PortfolioImg from "./../../assets/img/image_6.webp";
 import backgroundImage from "./../../assets/img/image_7.webp";
-
+import Footer from "../../Components/Footer/Footer";
 import SimpleSeparationLine from "Components/Bars/SimpleSeparationLine";
 
 import "./HomePage.css";
@@ -36,7 +36,6 @@ const secondCard =
             image={CurriculumImg}
         />
     </Suspense>
-
 
 const HomePage = () => {
     return (
@@ -74,6 +73,7 @@ const HomePage = () => {
                                 </Link>
                             </article>
                         </section>
+                        <Footer />
                     </>
                 }
             />
