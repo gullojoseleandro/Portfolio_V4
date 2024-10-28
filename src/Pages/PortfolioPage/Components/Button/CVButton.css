@@ -1,24 +1,49 @@
 .cv-button {
     background-color: #FFBA08;
     color: #03071E;
-    font-size: 0.875rem;
-    padding: 10px 20px;
-    border-radius: 30px;
-    transition: background-color 0.4s, transform 0.4s, box-shadow 0.4s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+    font-size: calc(0.7rem + 0.5vw);
+    padding: 8px 20px; 
+    border-radius: 10px;
+    border: 2px solid transparent; 
+    transition: background-color 0.4s, transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     outline: none;
-    border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .cv-button {
+        font-size: calc(0.8rem + 0.5vw);
+        padding: 6px 12px;
+        margin: 0 10px;
+        border-radius: 10px; 
+    }
+}
+
+.cv-button:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.2); 
+    transition: transform 0.4s;
+    transform: scale(0); 
+    border-radius: 10px;
+}
+
+.cv-button:hover:before {
+    transform: scale(1); 
 }
 
 .cv-button.active {
     background-color: rgb(190, 38, 33);
     color: #FFBA08;
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border-color: #FFBA08; 
 }
 
 .cv-button-text {
@@ -26,4 +51,5 @@
     padding: 0;
     transition: color 0.4s;
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
 }

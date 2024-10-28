@@ -3,7 +3,7 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(3px);
+        transform: translateX(5px);
     }
 }
 
@@ -12,6 +12,11 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(10px);
+        transform: translateY(15px);
     }
+}
+
+.Card:hover {
+    animation-play-state: paused;
+    cursor: pointer;
 }

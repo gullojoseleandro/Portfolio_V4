@@ -26,7 +26,6 @@ const PortfolioPage = () => {
             <PortfolioNavbar
                 activeIndex={activeIndex}
                 setActiveIndex={handleSectionChange}
-                activeSection={activeSection}
                 setActiveSection={setActiveSection}
             />
             <MainLayout

@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
-export const Footer = () => {
+const Footer = () => {
     const [isFooterHovered, setIsFooterHovered] = useState(false);
     const [isLinkHovered, setIsLinkHovered] = useState(false);
 
@@ -73,3 +73,5 @@ export const Footer = () => {
         </footer>
     );
 };
+
+export default Footer;

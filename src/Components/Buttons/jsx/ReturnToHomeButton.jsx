@@ -25,7 +25,6 @@ const ReturnToHomeButton = () => {
             <FontAwesomeIcon
                 icon={faArrowLeft}
                 size="lg"
-                className="icon"
                 style={{ color: "#FFBA08" }}
             />
             <p
