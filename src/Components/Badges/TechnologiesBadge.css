@@ -1,0 +1,49 @@
+.technologies-container {
+    overflow: hidden;
+    --gap: 2rem;
+    gap: var(--gap);
+    border-block: 1px solid #FFBA08;
+    padding-block: 8px;
+    white-space: nowrap;
+    position: relative;
+}
+
+.technologies-container:after,
+.technologies-container:before {
+    position:absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.technologies-list {
+    display: inline-block;
+    animation: 90s slide infinite linear;
+}
+
+.technologies-list:hover {
+    animation-play-state: paused;
+}
+
+
+.technologies-list img {
+    width: 50px;
+    height: 50px;
+    margin-left: 2rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.technologies-list img:hover {
+    transform: scale(1.3);
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
