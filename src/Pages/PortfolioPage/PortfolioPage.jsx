@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import fondoGalaxia from "../../assets/img/fondo_galaxia.gif";
 import PortfolioNavbar from "./Components/Navbar/jsx/PortfolioNavbar";
