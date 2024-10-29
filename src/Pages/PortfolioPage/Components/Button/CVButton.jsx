@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CV from "./../../../../assets/Files/Gullo José Leandro - Octubre 2024.pdf";
+// import CV from "./../../../../assets/Files/Gullo José Leandro - Octubre 2024.pdf";
 import "./CVButton.css"; 
 
 const CVButton = ({...props}) => {

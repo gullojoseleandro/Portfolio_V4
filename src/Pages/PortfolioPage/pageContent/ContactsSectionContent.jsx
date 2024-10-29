@@ -61,7 +61,7 @@ const ContactsSectionContent = () => {
     const activeWidth = useWindowWidth();
     const form = useRef();
     const [isHover, setIsHover] = useState(false);
-    const [isButtonHover, setIsButtonHover] = useState(false);
+    // const [isButtonHover, setIsButtonHover] = useState(false);
     const [feedback, setFeedback] = useState('');
     const [copiedIconIndex, setCopiedIconIndex] = useState(null);
 
@@ -208,8 +208,8 @@ const ContactsSectionContent = () => {
                                         content={"Enviar"}
                                         width={"200px"}
                                         className={"btn border-none fw-bold"}
-                                        onMouseEnter={() => setIsButtonHover(true)}
-                                        onMouseLeave={() => setIsButtonHover(false)}
+                                        // onMouseEnter={() => setIsButtonHover(true)}
+                                        // onMouseLeave={() => setIsButtonHover(false)}
                                     />
                                 </form>
                             </div>
