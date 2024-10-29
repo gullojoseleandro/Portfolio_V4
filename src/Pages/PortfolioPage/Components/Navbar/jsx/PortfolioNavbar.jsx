@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useState, useCallback } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faBars, faTimes, faHome, faProjectDiagram, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -113,7 +114,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                 )}
             </button>
         ))
-    ), [navLinks, activeIndex, hoveredIndex, handleNavLinkClick]);
+    ), [activeIndex, hoveredIndex, handleNavLinkClick]);
 
     return (
         <nav className="navbar fixed-top d-flex justify-content-between align-items-center" style={{ userSelect: "none", padding: "10px 20px" }}>
