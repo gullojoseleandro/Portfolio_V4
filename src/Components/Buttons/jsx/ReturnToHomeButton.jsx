@@ -31,7 +31,7 @@ const ReturnToHomeButton = () => {
                 className="label"
                 style={{ color: "#FFBA08" }}
             >
-                Home
+                Mi web
             </p>
         </Link>
     );
