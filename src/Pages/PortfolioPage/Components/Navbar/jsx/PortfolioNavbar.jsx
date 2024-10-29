@@ -113,7 +113,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                 )}
             </button>
         ))
-    ), [activeIndex, hoveredIndex, handleNavLinkClick]);
+    ), [navLinks, activeIndex, hoveredIndex, handleNavLinkClick]);
 
     return (
         <nav className="navbar fixed-top d-flex justify-content-between align-items-center" style={{ userSelect: "none", padding: "10px 20px" }}>
