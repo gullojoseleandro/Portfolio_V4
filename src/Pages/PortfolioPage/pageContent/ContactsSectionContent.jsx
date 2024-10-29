@@ -62,6 +62,7 @@ const ContactsSectionContent = () => {
     const form = useRef();
     const [isHover, setIsHover] = useState(false);
     // const [isButtonHover, setIsButtonHover] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
     const [feedback, setFeedback] = useState('');
     const [copiedIconIndex, setCopiedIconIndex] = useState(null);
 
@@ -85,8 +86,14 @@ const ContactsSectionContent = () => {
         }, (error) => {
             console.log('Failed to send email to you...', error.text);
         });
-    };
     
+        setIsSubmit(true);
+        e.target.reset();
+
+        setTimeout(() => {
+            setIsSubmit(false);
+        }, 1500);
+    };
 
     const handleCopy = (text, index) => {
         navigator.clipboard.writeText(text);
@@ -172,6 +179,20 @@ const ContactsSectionContent = () => {
                                         {feedback}
                                     </div>
                                 )}
+                                {isSubmit && (
+                                    <div className="position-absolute bottom-0 start-50 translate-middle bg-transparent p-1" style={{
+                                        color: "#FFBA08",
+                                        fontSize: "0.875rem",
+                                        borderRadius: "3px",
+                                        border: "2px solid #FFBA08",
+                                        opacity: 0.9,
+                                        transition: "opacity 0.3s ease-in-out",
+                                        zIndex: 100,
+                                        marginTop: "5px"
+                                    }}>
+                                        Su correo ha sido enviado, gracias!
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <div className={"col-6 border rounded-end"}>
@@ -250,7 +271,23 @@ const ContactsSectionContent = () => {
                                 </div>
                             ))}
                         </div>
-
+                        {isSubmit && (
+                                    <div 
+                                        className="position-absolute bottom-0 start-50 translate-middle bg-transparent p-1" 
+                                        style={{
+                                            color: "#FFBA08",
+                                            textWrap: "nowrap",
+                                            fontSize: "0.875rem",
+                                            borderRadius: "3px",
+                                            border: "2px solid #FFBA08",
+                                            opacity: 0.9,
+                                            transition: "opacity 0.3s ease-in-out",
+                                            zIndex: 100,
+                                            marginTop: "5px"
+                                    }}>
+                                        Su correo ha sido enviado, gracias!
+                                    </div>
+                                )}
                         <div data-aos="fade-up" className={"row bg-transparent"} style={{ width: "90%" }}>
                             <h2
                                 className={"fw-bold text-center text-light fst-italic w-100 mb-3"}

@@ -22,7 +22,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
         {
             label: "Inicio",
             href: "#inicio",
-            section: <HomeSectionContent setActiveSection={setActiveSection}/>,
+            section: <HomeSectionContent />,
             index: 0,
             state: false,
             icon: faHome,
@@ -32,7 +32,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
             href: "#proyectos",
             section: <ProjectsSectionContent />,
             index: 1,
-            state: false,
+            state: true,
             icon: faProjectDiagram,
         },
         {
@@ -40,7 +40,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
             href: "#contacto",
             section: <ContactsSectionContent />,
             index: 2,
-            state: true,
+            state: false,
             icon: faEnvelope,
         },
         {
@@ -48,7 +48,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
             href: "#sobremi",
             section: <AboutMe />,
             index: 3,
-            state: true,
+            state: false,
             icon: faUser,
         },
     ];
@@ -60,9 +60,9 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
         }
     }, [activeButton]);
 
-    const handleNavLinkClick = useCallback((index, section) => {
+    const handleNavLinkClick = useCallback((index, sectionComponent) => {
         setActiveIndex(index);
-        setActiveSection(section);
+        setActiveSection(sectionComponent);
         setHoveredIndex(null);
         if (activeWidth <= 768) {
             setIsClosing(true);

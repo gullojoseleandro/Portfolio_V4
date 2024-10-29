@@ -1,17 +1,34 @@
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import SocialMenu from "../../../Components/SocialMenu/SocialMenu";
 import Title from "../Components/Title/Title";
-// import CVButton from "../Components/Button/CVButton";
+import CVButton from "../Components/Button/CVButton";
 import TechnologiesBadge from "Components/Badges/TechnologiesBadge";
-// import ContactsSectionContent from "./ContactsSectionContent";
+import ContactsSectionContent from "./ContactsSectionContent";
 
-const HomeSectionContent = memo(() => {
+const HomeSectionContent = memo(({setActiveSection, setActiveIndex}) => {
+    console.log(setActiveSection)
+    console.log(setActiveIndex)
+
+    const handleSectionChange = useCallback(() => {
+        if (typeof setActiveIndex === "function" && typeof setActiveSection === "function") {
+            setActiveIndex(2);
+            setActiveSection(<ContactsSectionContent />);
+        } else {
+            console.error("setActiveIndex o setActiveSection no está definido");
+        }
+    }, [setActiveIndex, setActiveSection]);
+
     return (
         <section className={"d-flex flex-column h-100 align-items-center justify-content-center text-center"}>
             <div data-aos="fade-down"><SocialMenu /></div>
             <div data-aos="zoom-in"><Title /></div>
             <div className={"py-5"} data-aos="zoom-in"><TechnologiesBadge /></div>
-            {/* <div data-aos="fade-up"><CVButton onClick={()=>setActiveSection(<ContactsSectionContent />)} content="Contactá conmigo"/></div> */}
+            <div data-aos="fade-up">
+                <CVButton 
+                    onClick={()=> handleSectionChange()} 
+                    className={"btn border-none fw-bold"} 
+                    content="Contactate conmigo"/>
+            </div>
         </section>
     );
 });
