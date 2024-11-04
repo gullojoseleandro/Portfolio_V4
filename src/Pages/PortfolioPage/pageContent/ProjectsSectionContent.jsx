@@ -1,40 +1,58 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Card from '../../../Components/Cards/Card';
 import Slider from "react-slick";
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { SiJavascript, SiReact, SiCsharp, SiAstro, SiPython } from 'react-icons/si';
+import { FaJava } from "react-icons/fa";
 import useWindowWidth from 'Hooks/useWindowWidth';
 import useWindowHeight from 'Hooks/useWindowHeight';
+import FacilCV from './../../../assets/img/FacilCV.png'
 
 const projects = [
     {
-        title: "Proyecto X",
+        title: "FacilCV",
+        content: "Desarrollé una aplicación web que permite a los usuarios crear y compartir su CV público. La aplicación utiliza C# con ASP.NET en el backend y Astro con React en el frontend. Los usuarios pueden crear y editar su CV en formato PDF y ver el número de visitas a su CV en tiempo real. (En construcción).",
+        image: FacilCV,
+        technologies: ["Astro", "React", "C#", "JavaScript"],
+        href: "https://facilcv.netlify.app/",
+    },
+    {
+        title: "Sistema para peluquería canina",
         content: "En construcción.",
+        technologies: ["Java"],
+        href: "https://github.com/gullojoseleandro/CRUD_peluqueria_canina",
+    },
+    {
+        title: "Mi web personal",
+        content: "En construcción.",
+        technologies: ["JavaScript, React"],
+        href: "https://gullojl-dev.netlify.app/HomePage",
     },
     {
         title: "Proyecto X",
         content: "En construcción.",
+        technologies: ["none"]
     },
-    {
-        title: "Proyecto X",
-        content: "En construcción.",
-    },
-    {
-        title: "Proyecto X",
-        content: "En construcción.",
-    },
+];
+
+const techIcons = [
+    { tech: "Astro", icon: SiAstro },
+    { tech: "JavaScript", icon: SiJavascript },
+    { tech: "React", icon: SiReact },
+    { tech: "C#", icon: SiCsharp },
+    { tech: "Java", icon: FaJava },
+    { tech: "Python", icon: SiPython },
 ];
 
 const icons = [
     {
-        href: "https://github.com/gullojoseleandro/gullojoseleandro.github.io",
         icon: faGithub,
-        alt: "Enlace al antiguo portfolio",
+        alt: "icono de github",
     },
     {
-        href: "https://gullojoseleandro.github.io/",
         icon: faGlobe,
-        alt: "Enlace al portfolio actual",
+        alt: "icono de web",
     },
 ];
 
@@ -47,6 +65,11 @@ const determineSlidesToShow = (width, height) => {
 const ProjectsSectionContent = () => {
     const activeWidth = useWindowWidth();
     const activeHeight = useWindowHeight();
+    const [selectedTechnology, setSelectedTechnology] = useState(null);
+
+    const filteredProjects = selectedTechnology
+        ? projects.filter(project => project.technologies.includes(selectedTechnology))
+        : projects;
 
     const slidesToShow = useMemo(() => determineSlidesToShow(activeWidth, activeHeight), [activeWidth, activeHeight]);
 
@@ -60,37 +83,51 @@ const ProjectsSectionContent = () => {
     };
 
     return (
-        <section className="d-flex align-items-center justify-content-center h-100">
-            <div 
-                className={`${activeWidth > 768 ? "row align-items-center w-100 p-4" : "w-100 mb-5"}`} 
+        <section className={`d-flex ${activeWidth > 768 ? "align-items-end" : "align-items-center"} justify-content-center h-100`}>
+            <div
+                className={`${activeWidth > 768 ? "row align-items-end w-100 px-4 mb-3" : "w-100 mb-5"}`}
                 style={{ width: "90%", height: "600px", overflow: activeWidth > 768 ? "hidden" : "auto" }}
             >
+                <div style={{ width: '100%' }}>
+                    <div className="tech-icons d-flex flex-column justify-content-center align-items-center">
+                        <label htmlFor="filter" style={{color: "#FFBA08"}}>Filtra por tecnología:</label>
+                        <div className={"d-flex gap-4"}>
+                        {techIcons.map(({ tech, icon: IconComponent }) => (
+                            <IconComponent
+                                key={tech}
+                                size="2em"
+                                style={{
+                                    cursor: "pointer",
+                                    color: selectedTechnology === tech ? "#FFBA08" : "rgba(255, 186, 8, 0.3)"
+                                }}
+                                onClick={() => setSelectedTechnology(selectedTechnology === tech ? null : tech)}
+                                title={`Filtrar por ${tech}`}
+                            />
+                        ))}
+                        </div>
+                    </div>
+                </div>
                 {activeWidth > 768 ? (
                     <div className={"container-fluid"}>
-                    <Slider {...settings}>
-                        {projects.map((project, index) => (
-                            <div
-                                key={index}
-                                data-aos="flip-left"
-                                data-aos-easing="ease-out-cubic"
-                                data-aos-duration="2000"
-                            >
-                                <Card
-                                    title={project.title}
-                                    content={project.content}
-                                    image={project.image}
-                                    socialIcons={true}
-                                    icons={icons}
-                                />
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
+                        <Slider {...settings}>
+                            {filteredProjects.map((project, index) => (
+                                <div key={index} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                                    <Card
+                                        title={project.title}
+                                        content={project.content}
+                                        image={project.image}
+                                        socialIcons={true}
+                                        icons={icons}
+                                    />
+                                </div>
+                            ))}
+                        </Slider>
+                    </div>
                 ) : (
-                    projects.map((project, index) => (
+                    filteredProjects.map((project, index) => (
                         <Card
                             key={index}
-                            title={project.title}  
+                            title={project.title}
                             content={project.content}
                             image={project.image}
                         />
