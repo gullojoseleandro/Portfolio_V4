@@ -5,6 +5,22 @@ import SimpleSeparationLine from 'Components/Bars/SimpleSeparationLine';
 import useWindowWidth from 'Hooks/useWindowWidth';
 import { useMemo, useCallback } from 'react';
 import "./Card.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+
+const projectIcons = [
+    {
+        href: "https://github.com/gullojoseleandro/facilCV",
+        icon: faGithub,
+        alt: "github link"
+    },
+    {
+        href: "https://facilcv.netlify.app/",
+        icon: faGlobe,
+        alt: "project demo"
+    },
+];
 
 const colorsCircles = [
     { color: "#00FF00" },
@@ -25,8 +41,8 @@ const Card = ({ image, title, content }) => {
     }), [activeWidth]);
 
     const neonCircleStyle = useCallback((color) => ({
-        width: activeWidth > 768 ? "15px" : "10px",
-        height: activeWidth > 768 ? "15px" : "10px",
+        width: activeWidth > 768 ? "15px" : "15px",
+        height: activeWidth > 768 ? "15px" : "15px",
         borderRadius: "50%",
         backgroundColor: color,
         boxShadow: `0 0 5px ${color}, 0 0 10px ${color}, 0 0 20px ${color}, 0 0 30px ${color}`,
@@ -34,7 +50,7 @@ const Card = ({ image, title, content }) => {
     }), [activeWidth]);
 
     const handleMouseEnter = useCallback((e) => {
-        e.currentTarget.style.transform = "scale(1.2)";
+        e.currentTarget.style.transform = "scale(1.3)";
     }, []);
 
     const handleMouseLeave = useCallback((e) => {
@@ -43,18 +59,19 @@ const Card = ({ image, title, content }) => {
 
     return (
         <section className="d-flex flex-column align-items-center justify-content-center text-center m-3"
-            style={{ height: activeWidth > 768 ? "400px" : "350px" }}>
+            style={{ height: activeWidth > 768 ? "500px" : "500px" }}>
             <MUICard
                 className="Card p-0 m-0 border rounded-5 shadow h-100"
                 sx={{
-                    width: activeWidth > 768 ? (activeWidth < 1024 ? "300px" : "470px") : "100%",
+                    width: activeWidth > 768 ? (activeWidth < 1024 ? "300px" : "500px") : "100%",
                     backgroundColor: 'transparent',
                     overflow: activeWidth > 768 ? "" : "hidden",
                     transition: 'transform 0.2s ease-in-out',
+                    cursor: 'none',
                     ...animationStyle,
                 }}
             >
-                <header className="d-flex m-3 gap-2" style={{ height: "3%" }}>
+                <header className="d-flex m-3 gap-2">
                     {colorsCircles.map((color, index) => (
                         <div
                             key={index}
@@ -64,7 +81,7 @@ const Card = ({ image, title, content }) => {
                         />
                     ))}
                 </header>
-                <section style={{ height: "65%" }}>
+                <section style={{height: activeWidth > 768 ? "250px" : "220px"}}>
                     <SimpleSeparationLine />
                     <img
                         src={image || NoImage}
@@ -79,11 +96,10 @@ const Card = ({ image, title, content }) => {
                     />
                     <SimpleSeparationLine />
                 </section>
-                <div className={`d-flex flex-column ps-3 py-3 ${activeWidth > 768 ? 'gap-2' : 'gap-2'}`}
-                    style={{ backgroundColor: 'transparent' }}>
+                <div className={"flex-grow-1 p-3 overflow-y-auto"}>
                     <Typography
                         align="left"
-                        className="text-light"
+                        className="text-light text-shadow fw-bold"
                         sx={{ fontSize: "calc(0.6rem + 1vw)", textShadow: '1px 1px 2px rgba(0, 0, 0, 0.7)' }}
                     >
                         {title}
@@ -95,6 +111,23 @@ const Card = ({ image, title, content }) => {
                         {content}
                     </Typography>
                 </div>
+                <footer className={"d-flex justify-content-center gap-5 p-1 border-top position-absolute bottom-0 w-100"}>
+                    {projectIcons.map((projectIcon, index) => (
+                        <a
+                            key={index}
+                            href={projectIcon.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{ color: '#FFBA08' }}
+                        >
+                            <FontAwesomeIcon
+                                size="2x"
+                                color="#FFBA08"
+                                icon={projectIcon.icon}
+                            />
+                        </a>
+                    ))}
+                </footer>
             </MUICard>
         </section>
     );
