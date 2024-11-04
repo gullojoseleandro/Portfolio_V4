@@ -18,5 +18,8 @@
 
 .Card:hover {
     animation-play-state: paused;
-    cursor: pointer;
+    cursor: grab;
 }
+.Card:active {
+    cursor: grabbing;
+  }
