@@ -90,7 +90,7 @@ const ProjectsSectionContent = () => {
             >
                 <div style={{ width: '100%' }}>
                     <div className="tech-icons d-flex flex-column justify-content-center align-items-center">
-                        <label htmlFor="filter" style={{color: "#FFBA08"}}>Filtra por tecnología:</label>
+                        <label htmlFor="filter" className={"mb-2"} style={{color: "#FFBA08"}}>Filtra por tecnología:</label>
                         <div className={"d-flex gap-4"}>
                         {techIcons.map(({ tech, icon: IconComponent }) => (
                             <IconComponent
