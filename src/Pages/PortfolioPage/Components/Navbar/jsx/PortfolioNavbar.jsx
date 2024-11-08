@@ -39,7 +39,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
             style={{
                 backgroundColor: activeIndex === index ? "rgba(190, 38, 33, 0.7)" : "rgba(255, 186, 8, 1)",
                 boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                width: activeWidth > 768 ? activeHeight >= 950 ? "10rem" : "7rem" : "auto", 
+                width: activeWidth > 768 ? activeHeight >= 940 ? "10rem" : "7rem" : "auto", 
                 height: "100%",
                 border: activeWidth > 768 ? "2px solid #FFBA08" : "none",
                 transition: "background-color 0.4s, transform 0.4s",
