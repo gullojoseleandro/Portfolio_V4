@@ -12,7 +12,7 @@ import FacilCV from './../../../assets/img/FacilCV.png'
 const projects = [
     {
         title: "FacilCV",
-        content: "Desarrollé una aplicación web que permite a los usuarios crear y compartir su CV público. La aplicación utiliza C# con ASP.NET en el backend y Astro con React en el frontend. Los usuarios pueden crear y editar su CV en formato PDF y ver el número de visitas a su CV en tiempo real. (En construcción).",
+        content: `App web que permitirá a los usuarios crear y compartir su CV público así como también descargarlo en formato PDF. \nDesarrollada con C# y ASP.NET en el backend y Astro con React en el frontend. (En desarrollo)`,
         image: FacilCV,
         technologies: ["Astro", "React", "C#", "JavaScript"],
         href: "https://facilcv.netlify.app/",
@@ -35,6 +35,15 @@ const projects = [
         technologies: ["none"]
     },
 ];
+
+const formatContent = (content) => {
+    return content.split("\n").map((text, index) => (
+        <span key={index}>
+            {text}
+            <br />
+        </span>
+    ));
+};
 
 const techIcons = [
     { tech: "Astro", icon: SiAstro },
@@ -81,11 +90,10 @@ const ProjectsSectionContent = () => {
         slidesToShow,
         slidesToScroll: 1,
     };
-
     return (
         <section className={`d-flex flex-column align-items-center justify-content-center h-100`}>
             <div
-                className={`${activeWidth > 768 ? activeHeight >= 950 ? "row align-items-end w-100 px-4 mb-5" : "row align-items-end w-100 px-4" : "w-100 mb-5"}`}
+                className={`${activeWidth > 768 ? activeHeight >= 940 ? "row align-items-end w-100 px-4 mb-5" : "row align-items-end w-100 px-4" : "w-100 mb-5"}`}
                 style={{ width: "90%", height: "600px", overflow: activeWidth > 768 ? "inherit" : "auto" }}
             >
                 <div style={{ width: '100%' }}>
@@ -108,12 +116,12 @@ const ProjectsSectionContent = () => {
                     </div>
                 </div>
                 {activeWidth > 768 ? (
-                        <Slider style={{height: "1000px"}} {...settings}>
+                        <Slider {...settings}>
                             {filteredProjects.map((project, index) => (
                                 <div key={index} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                                     <Card
                                         title={project.title}
-                                        content={project.content}
+                                        content={formatContent(project.content)}
                                         image={project.image}
                                         socialIcons={true}
                                         icons={icons}

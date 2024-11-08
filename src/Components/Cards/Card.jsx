@@ -60,22 +60,22 @@ const Card = ({ image, title, content }) => {
     }, []);
 
     const cardHeight = useMemo(() => {
-        if (activeWidth >= 1912 && activeHeight >= 950) {  
-            return "600px";
-        } else if (activeWidth >= 1272 && activeHeight >= 674) {  
-            return "510px";  
-        } else if (activeWidth >= 768 && activeHeight >= 1080) {  
-            return "600px";
+        if (activeHeight >= 940) {  
+            return "580px";
+        } else if (activeHeight >= 600) {  
+            return "490px";  
+        } else if (activeHeight >= 1080) {  
+            return "590px";
         } else if (activeWidth < 768) {  
-            return "490px";
+            return "450px";
         }
-        return "490px"; 
+        return "470px"; 
     }, [activeWidth, activeHeight]);
 
     return (
         <section
             className="d-flex flex-column align-items-center justify-content-center text-center m-3"
-            style={{ height: cardHeight }}  // Aplicamos la altura dinámica
+            style={{ height: cardHeight }}  
         >
             <MUICard
                 className="Card p-0 m-0 border rounded-5 shadow h-100"
