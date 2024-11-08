@@ -87,7 +87,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                     <p className="fw-bold m-0 p-0" style={{ color: "#FFBA08", fontSize: "1.5rem" }}>JLG</p>
                 </motion.div>
                 {activeWidth > 768 ? (
-                    <div className="d-flex gap-1" style={{width: activeHeight >= 950 ? "36rem" : "28rem", height: "100%"}}>
+                    <div className="d-flex gap-1" style={{width: activeHeight >= 950 ? "auto" : "28rem", height: "auto"}}>
                         {navLinks.map((link, index) => (
                             <NavLink key={link.href} {...link} />
                         ))}
