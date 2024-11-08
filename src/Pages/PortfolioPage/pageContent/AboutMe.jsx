@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import useWindowWidth from 'Hooks/useWindowWidth';
-import useWindowHeight from 'Hooks/useWindowHeight';
 import MiFoto from './../../../assets/img/yo.jpeg';
 
 const AboutMe = () => {
     const activeWidth = useWindowWidth();
-    const activeHeight = useWindowHeight();
     const isLargeScreen = activeWidth > 768;
     const [typingText, setTypingText] = useState('');
     const [hasTyped, setHasTyped] = useState(false);
