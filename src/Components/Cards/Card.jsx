@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import NoImage from 'assets/img/no-image.jpeg';
 import SimpleSeparationLine from 'Components/Bars/SimpleSeparationLine';
 import useWindowWidth from 'Hooks/useWindowWidth';
+import useWindowHeight from 'Hooks/useWindowHeight';
 import { useMemo, useCallback } from 'react';
 import "./Card.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -34,6 +35,7 @@ const getRandomDuration = () => `${2 + Math.random() * 3}s`;
 
 const Card = ({ image, title, content }) => {
     const activeWidth = useWindowWidth();
+    const activeHeight = useWindowHeight();
 
     const animationStyle = useMemo(() => ({
         animation: `${activeWidth > 768 ? 'moveUpwards' : 'moveSideways'} ${getRandomDuration()} ease-in-out infinite alternate`,
@@ -57,9 +59,24 @@ const Card = ({ image, title, content }) => {
         e.currentTarget.style.transform = "scale(1)";
     }, []);
 
+    const cardHeight = useMemo(() => {
+        if (activeWidth >= 1912 && activeHeight >= 950) {  
+            return "600px";
+        } else if (activeWidth >= 1272 && activeHeight >= 674) {  
+            return "510px";  
+        } else if (activeWidth >= 768 && activeHeight >= 1080) {  
+            return "600px";
+        } else if (activeWidth < 768) {  
+            return "490px";
+        }
+        return "490px"; 
+    }, [activeWidth, activeHeight]);
+
     return (
-        <section className="d-flex flex-column align-items-center justify-content-center text-center m-3"
-            style={{ height: activeWidth > 768 ? "500px" : "500px" }}>
+        <section
+            className="d-flex flex-column align-items-center justify-content-center text-center m-3"
+            style={{ height: cardHeight }}  // Aplicamos la altura dinámica
+        >
             <MUICard
                 className="Card p-0 m-0 border rounded-5 shadow h-100"
                 sx={{
@@ -81,7 +98,7 @@ const Card = ({ image, title, content }) => {
                         />
                     ))}
                 </header>
-                <section style={{height: activeWidth > 768 ? "250px" : "220px"}}>
+                <section style={{ height: activeWidth > 768 ? "250px" : "220px" }}>
                     <SimpleSeparationLine />
                     <img
                         src={image || NoImage}
