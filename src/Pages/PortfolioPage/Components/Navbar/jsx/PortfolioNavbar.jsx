@@ -39,7 +39,8 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
             style={{
                 backgroundColor: activeIndex === index ? "rgba(190, 38, 33, 0.7)" : "rgba(255, 186, 8, 1)",
                 boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                width: activeWidth > 768 ? "150px" : "100%",
+                width: activeWidth > 768 ? activeHeight >= 950 ? "10rem" : "7rem" : "auto", 
+                height: "100%",
                 border: activeWidth > 768 ? "2px solid #FFBA08" : "none",
                 transition: "background-color 0.4s, transform 0.4s",
                 position: "relative",
@@ -87,7 +88,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                     <p className="fw-bold m-0 p-0" style={{ color: "#FFBA08", fontSize: "1.5rem" }}>JLG</p>
                 </motion.div>
                 {activeWidth > 768 ? (
-                    <div className="d-flex gap-1" style={{width: activeHeight >= 950 ? "auto" : "28rem", height: "auto"}}>
+                    <div className="d-flex gap-1">
                         {navLinks.map((link, index) => (
                             <NavLink key={link.href} {...link} />
                         ))}
