@@ -51,9 +51,10 @@ const HomeSectionContent = memo(({ setActiveSection, setActiveIndex }) => {
       </motion.div>
 
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        initial={{ scale: 0.6, opacity: 0 }}
+        animate={{ scale: 0.9, opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
+        className="d-flex"
       >
         <CVButton 
                 onClick={()=> handleSectionChange()} 

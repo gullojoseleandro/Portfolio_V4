@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import useWindowWidth from 'Hooks/useWindowWidth';
+import useWindowHeight from 'Hooks/useWindowHeight';
 import MiFoto from './../../../assets/img/yo.jpeg';
 
 const AboutMe = () => {
     const activeWidth = useWindowWidth();
+    const activeHeight = useWindowHeight();
     const isLargeScreen = activeWidth > 768;
     const [typingText, setTypingText] = useState('');
     const [hasTyped, setHasTyped] = useState(false);
@@ -49,10 +51,9 @@ const AboutMe = () => {
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="d-flex flex-column align-items-center justify-content-center text-center mt-5"
+            className="d-flex flex-column align-items-center justify-content-center mt-5"
             style={{
                 padding: '20px',
-                maxWidth: '1200px',
                 height: isLargeScreen ? '100%' : 'auto',
                 width: isLargeScreen ? 'auto' : '100%'
             }}
@@ -92,7 +93,7 @@ const AboutMe = () => {
                         tiempo que me sigo formando en una Licenciatura en Seguridad Informática y una Tecnicatura en Programación.
                     </motion.p>
 
-                    <motion.p variants={itemVariants} style={{ fontSize: isLargeScreen ? "1.1rem" : "1rem", fontWeight: "bold", color: '#f0db4f', marginTop: '1rem' }}>
+                    <motion.p className={"text-center"} variants={itemVariants} style={{ fontSize: isLargeScreen ? "1.1rem" : "1rem", fontWeight: "bold", color: '#f0db4f', marginTop: '1rem' }}>
                         ¡Gracias por pasarte por mi portfolio!
                     </motion.p>
                 </motion.div>

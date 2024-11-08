@@ -7,6 +7,7 @@ import ProjectsSectionContent from "Pages/PortfolioPage/pageContent/ProjectsSect
 import ContactsSectionContent from "Pages/PortfolioPage/pageContent/ContactsSectionContent";
 import AboutMe from "Pages/PortfolioPage/pageContent/AboutMe";
 import useWindowWidth from "Hooks/useWindowWidth";
+import useWindowHeight from "Hooks/useWindowHeight";
 
 const navLinks = [
     { label: "Inicio", href: "#inicio", section: <HomeSectionContent />, index: 0, state: false, icon: faHome },
@@ -19,6 +20,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const activeWidth = useWindowWidth();
+    const activeHeight = useWindowHeight();
 
     const handleNavLinkClick = useCallback((index, sectionComponent) => {
         setActiveIndex(index);
@@ -85,7 +87,7 @@ const PortfolioNavbar = ({ activeIndex, setActiveIndex, setActiveSection }) => {
                     <p className="fw-bold m-0 p-0" style={{ color: "#FFBA08", fontSize: "1.5rem" }}>JLG</p>
                 </motion.div>
                 {activeWidth > 768 ? (
-                    <div className="d-flex gap-1">
+                    <div className="d-flex gap-1" style={{width: activeHeight >= 950 ? "36rem" : "28rem", height: "100%"}}>
                         {navLinks.map((link, index) => (
                             <NavLink key={link.href} {...link} />
                         ))}

@@ -76,17 +76,17 @@ const ProjectsSectionContent = () => {
     const settings = {
         dots: true,
         infinite: true,
-        arrows: true,
+        arrows: false,
         speed: 500,
         slidesToShow,
         slidesToScroll: 1,
     };
 
     return (
-        <section className={`d-flex ${activeWidth > 768 ? "align-items-end" : "align-items-center"} justify-content-center h-100`}>
+        <section className={`d-flex flex-column align-items-center justify-content-center h-100`}>
             <div
-                className={`${activeWidth > 768 ? "row align-items-end w-100 px-4 mb-3" : "w-100 mb-5"}`}
-                style={{ width: "90%", height: "600px", overflow: activeWidth > 768 ? "hidden" : "auto" }}
+                className={`${activeWidth > 768 ? activeHeight >= 950 ? "row align-items-end w-100 px-4 mb-5" : "row align-items-end w-100 px-4" : "w-100 mb-5"}`}
+                style={{ width: "90%", height: "600px", overflow: activeWidth > 768 ? "inherit" : "auto" }}
             >
                 <div style={{ width: '100%' }}>
                     <div className="tech-icons d-flex flex-column justify-content-center align-items-center">
@@ -108,8 +108,7 @@ const ProjectsSectionContent = () => {
                     </div>
                 </div>
                 {activeWidth > 768 ? (
-                    <div className={"container-fluid"}>
-                        <Slider {...settings}>
+                        <Slider style={{height: "1000px"}} {...settings}>
                             {filteredProjects.map((project, index) => (
                                 <div key={index} data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                                     <Card
@@ -122,7 +121,6 @@ const ProjectsSectionContent = () => {
                                 </div>
                             ))}
                         </Slider>
-                    </div>
                 ) : (
                     filteredProjects.map((project, index) => (
                         <Card
