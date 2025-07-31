@@ -1,0 +1,24 @@
+.title-main {
+    font-size: calc(5rem + 3vw);
+    color: whitesmoke;
+}
+
+.title-sub {
+    font-size: 1.8rem;
+    color: whitesmoke;
+}
+
+.title-highlight {
+    color: #FFBA08;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .title-main {
+        font-size: calc(4rem + 4vw);
+    }
+
+    .title-sub {
+        font-size: 1.8rem;
+    }
+}

@@ -1,8 +1,67 @@
+/* Neue Montreal Font Faces */
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('./assets/fonts/Neue Montreal/NeueMontreal-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
+  font-family: 'Neue Montreal', sans-serif;
+  font-weight: 400;
 }
 * {
   margin: 0;
@@ -24,12 +83,13 @@ select {
 
 li {
   text-wrap: balance;
-  font-family: "Onest Variable", sans-serif;
+  font-family: 'Neue Montreal', sans-serif;
 }
 
 p {
   text-wrap: pretty;
-  font-family: "Onest Variable", sans-serif;
+  font-family: 'Neue Montreal', sans-serif;
+  font-weight: 400;
 }
 
 h1,
@@ -39,7 +99,8 @@ h4,
 h5,
 h6 {
   text-wrap: balance;
-  font-family: "Onest Variable", sans-serif;
+  font-family: 'Neue Montreal', sans-serif;
+  font-weight: 400;
 }
 
 img,

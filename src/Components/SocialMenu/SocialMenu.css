@@ -1,0 +1,16 @@
+.social-icon-link .social-icon {
+    font-size: 3rem; /* Approx 3x */
+    color: #FFBA08;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icon-link:hover .social-icon {
+    color: rgb(190, 38, 33);
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .social-icon-link .social-icon {
+        font-size: 2.8rem;
+    }
+}

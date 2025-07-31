@@ -1,0 +1,107 @@
+.interactive-cv-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    background-image: url('../../../../assets/img/fondo_galaxia.gif');
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* General Section Styling */
+.cv-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(242, 187, 5, 0.2);
+    scroll-snap-align: start;
+}
+
+.section-title {
+    font-size: calc(1.5rem + 2vw);
+    color: #f2bb05;
+    margin-bottom: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.skill-category h3 {
+    color: #f2bb05;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skills-container {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+    gap: 1.5rem; 
+    justify-content: center;
+}
+
+.skill-card {
+    background: #14192d;
+    padding: 1.5rem 1rem; 
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem; 
+    color: white;
+    font-size: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    aspect-ratio: 1 / 1; 
+    text-align: center;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(242, 187, 5, 0.2);
+}
+
+.skill-card svg {
+    font-size: 3rem; 
+    color: #f2bb05;
+}
+
+.skill-card .skill-icon {
+    font-size: 3rem;
+    color: #f2bb05;
+}
+
+.skill-card:hover .skill-icon {
+    color: #14192d;
+}
+
+.skill-card .skill-name {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.skill-card:hover .skill-name {
+    color: #14192d;
+}
+
+/* Experience Section */
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+}

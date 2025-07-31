@@ -1,124 +1,217 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import useWindowWidth from 'Hooks/useWindowWidth';
-import MiFoto from './../../../assets/img/yo.jpeg';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCode,
+  faGraduationCap,
+  faLaptopCode,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
+import useWindowWidth from "Hooks/useWindowWidth";
+import MiFoto from "./../../../assets/img/yo.jpeg";
+import "./AboutMe.css";
 
-const AboutMe = () => {
-    const activeWidth = useWindowWidth();
-    const isLargeScreen = activeWidth > 768;
-    const [typingText, setTypingText] = useState('');
-    const [hasTyped, setHasTyped] = useState(false);
-    const text = 'Hola, ¡te cuento un poco sobre mí!';
+const AboutMe = React.forwardRef(({ setActiveSection }, ref) => {
+  const activeWidth = useWindowWidth();
+  const isLargeScreen = activeWidth > 768;
+  const [typingText, setTypingText] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const text = "Hola, ¡te cuento un poco sobre mí!";
 
-    useEffect(() => {
-        if (!hasTyped) {
-            const typingInterval = setInterval(() => {
-                setTypingText(prevText => {
-                    if (prevText.length === text.length) {
-                        clearInterval(typingInterval);
-                        setHasTyped(true);
-                        return prevText;
-                    }
-                    return prevText + text[prevText.length];
-                });
-            }, 50);
-            return () => clearInterval(typingInterval);
-        }
-    }, [hasTyped]);
+  const startTyping = () => {
+    setTypingText("");
+    setIsTyping(true);
 
-    const containerVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.1,
-                when: "beforeChildren",
-                staggerChildren: 0.2
-            }
-        }
-    };
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex < text.length) {
+        setTypingText(text.substring(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTyping(false);
+      }
+    }, 120);
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    };
+    return () => clearInterval(typingInterval);
+  };
 
-    return (
-        <motion.section
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-            className="d-flex flex-column align-items-center justify-content-center mt-5"
-            style={{
-                padding: '20px',
-                height: isLargeScreen ? '100%' : 'auto',
-                width: isLargeScreen ? 'auto' : '100%'
-            }}
+  const containerVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <motion.section
+      ref={ref}
+      id="sobremi"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+      variants={containerVariants}
+      className="about-section cv-section"
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: isLargeScreen ? "60px 40px" : "40px 20px",
+      }}
+    >
+      <div className="about-container">
+        {/* Título Principal */}
+        <motion.div
+          className="about-header"
+          variants={itemVariants}
+          onViewportEnter={startTyping}
         >
-            <div
-                className={`d-flex ${isLargeScreen ? 'flex-row' : 'flex-column'} align-items-center justify-content-evenly w-100`}
+          <h1 className="about-title">
+            <span
+              className="typing-text"
+              style={{
+                display: "inline-block",
+              }}
             >
-                <motion.div 
-                    className="text-content d-flex flex-column text-light"
-                    variants={itemVariants}
-                    style={{
-                        maxWidth: '700px',
-                        padding: '20px'
-                    }}
-                >
-                    <h1
-                        style={{
-                            fontSize: isLargeScreen ? "calc(1.5rem + 2vw)" : "1.2rem",
-                            marginBottom: isLargeScreen ? '1.5rem' : '1rem',
-                            fontWeight: 'bold',
-                            color: '#00c1d4',
-                            whiteSpace: 'nowrap'
-                        }}
-                    >
-                        <span>{hasTyped ? text : typingText}</span>
-                    </h1>
+              {typingText}
+            </span>
+            <motion.span
+              className="cursor"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isTyping ? [0, 1, 0] : 1 }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+            >
+              |
+            </motion.span>
+          </h1>
+        </motion.div>
 
-                    <motion.p variants={itemVariants} style={{ fontSize: isLargeScreen ? "1.1rem" : "1rem", lineHeight: 1.6, marginBottom: '1rem', color: '#e0e0e0' }}>
-                        Soy un desarrollador Full Stack con sólidos conocimientos principalmente en <span style={{ color: '#00c1d4', fontWeight: 'bold' }}>Javascript</span> y <span style={{ color: '#00c1d4', fontWeight: 'bold' }}>React</span>
-                        (es lo que utilizo en mi día a día tanto personal como laboralmente).
-                        Tengo experiencia laboral en manejo de bases de datos (SQLServer) y manejo de APIs (REST),
-                        como también en ejecutables de consola en C# .NET
-                    </motion.p>
-
-                    <motion.p variants={itemVariants} style={{ fontSize: isLargeScreen ? "1.1rem" : "1rem", lineHeight: 1.6, marginBottom: '1rem', color: '#e0e0e0' }}>
-                        Actualmente, me encuentro trabajando profesionalmente como Desarrollador Full Stack en una empresa multinacional, al mismo
-                        tiempo que me sigo formando en una Licenciatura en Seguridad Informática y una Tecnicatura en Programación.
-                    </motion.p>
-
-                    <motion.p className={"text-center"} variants={itemVariants} style={{ fontSize: isLargeScreen ? "1.1rem" : "1rem", fontWeight: "bold", color: '#f0db4f', marginTop: '1rem' }}>
-                        ¡Gracias por pasarte por mi portfolio!
-                    </motion.p>
-                </motion.div>
-
-                <motion.img
-                    variants={itemVariants}
-                    src={MiFoto}
-                    alt="foto de Leandro Gullo"
-                    width={isLargeScreen ? 300 : 150}
-                    height={isLargeScreen ? 300 : 150}
-                    loading="lazy"
-                    className="rounded-circle img-fluid shadow-lg"
-                    style={{
-                        border: '4px solid #00c1d4',
-                        transition: 'transform 0.3s ease',
-                        ...(isLargeScreen && {
-                            float: 'right',
-                            margin: '0 20px 20px 0',
-                            shapeOutside: 'circle(50%)',
-                            clipPath: 'circle(50%)'
-                        })
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                />
+        {/* Contenido Principal */}
+        <div
+          className={`about-content ${
+            isLargeScreen ? "desktop-layout" : "mobile-layout"
+          }`}
+        >
+          {/* Información Personal */}
+          <motion.div className="about-info" variants={itemVariants}>
+            <div className="info-card">
+              <div className="card-header">
+                <FontAwesomeIcon icon={faCode} className="card-icon" />
+                <h3>Desarrollador Full Stack</h3>
+              </div>
+              <div className="card-content">
+                <p>
+                  Especializado en <span className="highlight">JavaScript</span>{" "}
+                  y <span className="highlight">React</span>, con experiencia
+                  sólida en desarrollo tanto frontend como backend. Experiencia personal
+                  con <span className="highlight">Node.js</span>,{" "}
+                  <span className="highlight">Express</span> y{" "}
+                  <span className="highlight">Next.js</span> para proyectos completos.
+                </p>
+                <div className="tech-badges">
+                  <span className="tech-badge">React</span>
+                  <span className="tech-badge">Next.js</span>
+                  <span className="tech-badge">JavaScript</span>
+                  <span className="tech-badge">Node.js</span>
+                  <span className="tech-badge">Express</span>
+                </div>
+              </div>
             </div>
-        </motion.section>
-    );
-}
+
+            <div className="info-card">
+              <div className="card-header">
+                <FontAwesomeIcon icon={faLaptopCode} className="card-icon" />
+                <h3>Experiencia Profesional</h3>
+              </div>
+              <div className="card-content">
+                <p>
+                  Actualmente trabajando como{" "}
+                  <span className="highlight">Desarrollador Full Stack</span> en
+                  una empresa multinacional, desarrollando aplicaciones web y
+                  APIs REST. Experiencia laboral realizando scripts con{" "}
+                  <span className="highlight">C#</span> y{" "}
+                  <span className="highlight">Python</span>, manejo de bases de datos
+                  con vistas y creación de procedures en{" "}
+                  <span className="highlight">SQL Server</span>, y utilizando
+                  herramientas DevOps como <span className="highlight">Docker</span>,{" "}
+                  <span className="highlight">CI/CD</span> y control de versiones con{" "}
+                  <span className="highlight">Bitbucket</span>.
+                </p>
+                <div className="tech-badges">
+                  <span className="tech-badge">C# .NET</span>
+                  <span className="tech-badge">Python</span>
+                  <span className="tech-badge">SQL Server</span>
+                  <span className="tech-badge">Docker</span>
+                  <span className="tech-badge">CI/CD</span>
+                  <span className="tech-badge">Bitbucket</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="info-card">
+              <div className="card-header">
+                <FontAwesomeIcon icon={faGraduationCap} className="card-icon" />
+                <h3>Formación Académica</h3>
+              </div>
+              <div className="card-content">
+                <p>
+                  Estudiando{" "}
+                  <span className="highlight">
+                    Licenciatura en Seguridad Informática
+                  </span>{" "}
+                  y
+                  <span className="highlight">
+                    {" "}
+                    Tecnicatura en Programación
+                  </span>
+                  , manteniéndome actualizado con las últimas tecnologías.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Foto de Perfil */}
+          <motion.div className="about-image" variants={itemVariants}>
+            <div className="image-container">
+              <div className="image-glow"></div>
+              <img
+                src={MiFoto}
+                alt="Leandro Gullo - Desarrollador Full Stack"
+                className="profile-image"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Mensaje de Agradecimiento */}
+            <motion.div
+              className="thank-you-card"
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+            >
+              <FontAwesomeIcon icon={faHeart} className="heart-icon" />
+              <p>¡Gracias por visitar mi portfolio!</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </motion.section>
+  );
+});
 
 export default AboutMe;

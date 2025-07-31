@@ -1,14 +1,33 @@
-.cardtitle {
-    margin: 0 !important;
-    text-shadow: 1px 1px 1px #c9c9c9;
-    font-size: calc(0.7rem + 0.9vw);
-  }
-  
-.cardcompany{
-  font-size: calc(0.3rem + 0.8vw);
-  text-shadow: 1px 1px 1px #c9c9c9;
+.cv-card {
+    background: #14192d;
+    border: 1px solid #f2bb05;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    margin-bottom: 2rem; /* Add margin between cards */
 }
 
-.cardcontent{
-  font-size: calc(0.2rem + 1vw);
+.cv-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(242, 187, 5, 0.2);
+}
+
+.cardtitle {
+    color: #f2bb05;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cardcompany {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.cardcontent {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
 }

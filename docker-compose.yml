@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-v4
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    networks:
+      - nginx_network
+    environment:
+      - NODE_ENV=production
+    volumes:
+      # Opcional: para logs persistentes
+      - ./logs:/var/log/nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.jlgdev.com`)"
+      - "traefik.http.routers.portfolio.tls=true"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+
+networks:
+  nginx_network:
+    external: true
+
+# Opcional: volumen para logs
+volumes:
+  logs:
+    driver: local

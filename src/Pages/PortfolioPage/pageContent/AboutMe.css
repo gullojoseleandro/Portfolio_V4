@@ -1,62 +1,318 @@
+/* Estilos futuristas para la sección About Me */
+
+/* Sección principal */
 .about-section {
-    padding: 20px;
-    max-width: 1200px;
+    position: relative;
+    overflow: hidden;
 }
 
-.content-wrapper {
+.about-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Título con efecto de escritura */
+.about-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about-title {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFBA08 0%, #FFD700 50%, #FFBA08 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.typing-text {
+    display: inline-block;
+}
+
+.cursor {
+    display: inline-block;
+    background: #FFBA08;
+    margin-left: 3px;
+    width: 3px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Layout principal */
+.about-content {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+}
+
+.desktop-layout {
+    grid-template-columns: 2fr 1fr;
+}
+
+.mobile-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Cards de información */
+.about-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 186, 8, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 186, 8, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 186, 8, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 186, 8, 0.2);
+}
+
+.info-card:hover::before {
+    left: 100%;
+}
+
+.card-header {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
-.text-content {
-    max-width: 700px;
-    padding: 20px;
+.card-icon {
+    color: #FFBA08;
+    font-size: 1.5rem;
+    padding: 8px;
+    background: rgba(255, 186, 8, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 186, 8, 0.3);
 }
 
-.about-heading {
-    font-size: calc(1rem + 2vw);
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    color: #00c1d4;
-    text-wrap: nowrap;
+.card-header h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
 }
 
-.about-paragraph {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+.card-content p {
     color: #e0e0e0;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
 }
 
 .highlight {
-    color: #00c1d4;
-    font-weight: bold;
+    color: #FFBA08;
+    font-weight: 600;
+    position: relative;
 }
 
-.closing-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #f0db4f;
-    margin-top: 1rem;
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #FFBA08, #FFD700);
+    border-radius: 1px;
 }
 
-.profile-img {
-    border: 4px solid #00c1d4;
-    transition: transform 0.3s ease;
+/* Badges de tecnologías */
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.profile-img:hover {
+.tech-badge {
+    background: rgba(255, 186, 8, 0.1);
+    border: 1px solid rgba(255, 186, 8, 0.3);
+    color: #FFBA08;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    background: rgba(255, 186, 8, 0.2);
     transform: scale(1.05);
 }
 
-.desktop-float {
-    float: right;
-    margin: 0 20px 20px 0;
-    shape-outside: circle(50%);
-    clip-path: circle(50%);
-    width: 300px; 
-    height: 300px; 
+/* Sección de imagen */
+.about-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.image-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+}
+
+.image-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle, rgba(255, 186, 8, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 0.4; }
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.image-border {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 3px solid;
+    border-image: linear-gradient(45deg, #FFBA08, #FFD700, #FFBA08) 1;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.image-container:hover .profile-image {
+    transform: scale(1.05);
+}
+
+/* Card de agradecimiento */
+.thank-you-card {
+    background: rgba(255, 186, 8, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 186, 8, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 280px;
+    width: 100%;
+}
+
+.thank-you-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 186, 8, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.thank-you-card:hover::before {
+    transform: translateX(100%);
+}
+
+.heart-icon {
+    color: #ff6b6b;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.thank-you-card p {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 0 10px;
+    }
+    
+    .about-header {
+        margin-bottom: 2rem;
+    }
+    
+    .info-card {
+        padding: 20px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .image-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .tech-badges {
+        justify-content: center;
+    }
+    
+    .mobile-layout .about-image {
+        order: -1;
+    }
 }

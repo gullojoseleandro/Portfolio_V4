@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faWhatsapp, faGithub } from '@fortawesome/free-brands-svg-icons';
+import './SocialMenu.css';
 
 const icons = [
     {
@@ -21,29 +22,23 @@ const icons = [
 ];
 
 const SocialMenu = () => {
-    const [activeIndex, setActiveIndex] = useState(null);
     return (
-        <>
-            <aside
-                className="d-flex justify-content-center align-items-center w-auto rounded-3 p-3 gap-5"
-            >
-                {icons.map((icon, index) => (
-                    <a
-                        key={index}
-                        aria-label={icon.alt}
-                        alt={icon.alt}
-                        href={icon.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onMouseEnter={() => setActiveIndex(index)}
-                        onMouseLeave={() => setActiveIndex(null)}
-                    >
-                        <FontAwesomeIcon size="3x" color={activeIndex === index ? "rgb(190, 38, 33)" : '#FFBA08'} icon={icon.icon} bounce={activeIndex === index} />
-                    </a>
-                ))}
-            </aside>
-        </>
-    )
-}
+        <aside className="d-flex justify-content-center align-items-center w-auto rounded-3 p-3 gap-5">
+            {icons.map((icon, index) => (
+                <a
+                    key={index}
+                    aria-label={icon.alt}
+                    alt={icon.alt}
+                    href={icon.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon-link"
+                >
+                    <FontAwesomeIcon icon={icon.icon} className="social-icon" />
+                </a>
+            ))}
+        </aside>
+    );
+};
 
 export default SocialMenu;

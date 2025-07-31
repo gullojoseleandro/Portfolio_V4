@@ -1,13 +1,14 @@
 import React, { memo } from "react";
+import './Title.css';
 
 const Title = memo(() => {
     return (
         <>
-            <h1 className="mt-1 m-0 p-0" style={{ fontSize: "calc(4rem + 3vw)", color: "whitesmoke" }}>
-                José Leandro <span style={{ color: "#FFBA08" }}>Gullo</span>
+            <h1 className="mt-1 m-0 p-0 title-main">
+                José Leandro <span className="title-highlight">Gullo</span>
             </h1>
-            <p style={{ fontSize: "1.5rem", color: "whitesmoke" }} className={"m-0 p-0"}>
-                Desarrollador Full<span style={{ color: "#FFBA08" }}>_</span>Stack
+            <p className={"m-0 p-0 title-sub"}>
+                Desarrollador Full<span className="title-highlight">_</span>Stack
             </p>
         </>
     );

@@ -3,7 +3,7 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(5px);
+        transform: translateX(3px);
     }
 }
 
@@ -12,14 +12,122 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(15px);
+        transform: translateY(-8px);
     }
+}
+
+@keyframes cardGlow {
+    0% {
+        box-shadow: 0 4px 20px rgba(255, 186, 8, 0.1);
+    }
+    100% {
+        box-shadow: 0 8px 30px rgba(255, 186, 8, 0.3);
+    }
+}
+
+.Card {
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 186, 8, 0.2) !important;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 186, 8, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.Card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 186, 8, 0.1),
+        transparent
+    );
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.Card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 186, 8, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.Card > * {
+    position: relative;
+    z-index: 2;
 }
 
 .Card:hover {
     animation-play-state: paused;
     cursor: grab;
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(255, 186, 8, 0.3),
+        0 0 100px rgba(255, 186, 8, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 186, 8, 0.6) !important;
 }
+
+.Card:hover::before {
+    left: 100%;
+}
+
 .Card:active {
     cursor: grabbing;
-  }
+    transform: translateY(-5px) scale(1.01) !important;
+}
+
+@keyframes cardPulse {
+    0%, 100% {
+        box-shadow: 
+            0 4px 20px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(255, 186, 8, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 4px 20px rgba(0, 0, 0, 0.3),
+            0 0 40px rgba(255, 186, 8, 0.2);
+    }
+}
+
+@keyframes circleGlow {
+    0% {
+        filter: brightness(1) saturate(1);
+        transform: scale(1);
+    }
+    100% {
+        filter: brightness(1.3) saturate(1.2);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes hologramFlicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    75% {
+        opacity: 0.9;
+    }
+}
