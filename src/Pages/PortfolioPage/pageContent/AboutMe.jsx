@@ -16,9 +16,13 @@ const AboutMe = React.forwardRef(({ setActiveSection }, ref) => {
   const isLargeScreen = activeWidth > 768;
   const [typingText, setTypingText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [hasTyped, setHasTyped] = useState(false);
   const text = "Hola, ¡te cuento un poco sobre mí!";
 
   const startTyping = () => {
+    if (hasTyped) return; // Evitar múltiples ejecuciones
+    
+    setHasTyped(true);
     setTypingText("");
     setIsTyping(true);
 
@@ -66,9 +70,10 @@ const AboutMe = React.forwardRef(({ setActiveSection }, ref) => {
       style={{
         minHeight: "100vh",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: isLargeScreen ? "60px 40px" : "40px 20px",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        padding: isLargeScreen ? "120px 40px 60px" : "100px 20px 40px",
+        paddingTop: isLargeScreen ? "120px" : "100px",
       }}
     >
       <div className="about-container">
@@ -185,30 +190,41 @@ const AboutMe = React.forwardRef(({ setActiveSection }, ref) => {
               </div>
             </div>
           </motion.div>
-
-          {/* Foto de Perfil */}
-          <motion.div className="about-image" variants={itemVariants}>
-            <div className="image-container">
-              <div className="image-glow"></div>
-              <img
-                src={MiFoto}
-                alt="Leandro Gullo - Desarrollador Full Stack"
-                className="profile-image"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Mensaje de Agradecimiento */}
-            <motion.div
-              className="thank-you-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
-              <FontAwesomeIcon icon={faHeart} className="heart-icon" />
-              <p>¡Gracias por visitar mi portfolio!</p>
-            </motion.div>
-          </motion.div>
         </div>
+
+        {/* Foto de Perfil y Mensaje - Al final */}
+        <motion.div 
+          className="about-footer"
+          variants={itemVariants}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+            marginTop: "3rem",
+            width: "100%"
+          }}
+        >
+          <div className="image-container">
+            <div className="image-glow"></div>
+            <img
+              src={MiFoto}
+              alt="Leandro Gullo - Desarrollador Full Stack"
+              className="profile-image"
+              loading="lazy"
+            />
+          </div>
+
+          {/* Mensaje de Agradecimiento */}
+          <motion.div
+            className="thank-you-card"
+            variants={itemVariants}
+            whileHover={{ scale: 1.02, y: -5 }}
+          >
+            <FontAwesomeIcon icon={faHeart} className="heart-icon" />
+            <p>¡Gracias por visitar mi portfolio!</p>
+          </motion.div>
+        </motion.div>
       </div>
     </motion.section>
   );

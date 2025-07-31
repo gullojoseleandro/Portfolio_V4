@@ -230,7 +230,7 @@ const ProjectsSectionContent = React.forwardRef((props, ref) => {
           variants={itemVariants}
           style={{ width: "100%", flexShrink: 0 }}
         >
-          <div className="tech-icons d-flex flex-column justify-content-center align-items-center">
+          <div className="tech-filter d-flex flex-column justify-content-center align-items-center">
             <label
               htmlFor="filter"
               className={"mb-2"}
@@ -238,27 +238,74 @@ const ProjectsSectionContent = React.forwardRef((props, ref) => {
             >
               Filtra por tecnología:
             </label>
-            <div className={"d-flex flex-wrap justify-content-center gap-4"}>
-              {availableTechIcons.map(({ tech, icon: IconComponent }) => (
-                <IconComponent
-                  key={tech}
-                  size="2em"
-                  style={{
-                    cursor: "pointer",
-                    color:
-                      selectedTechnology === tech
-                        ? "#FFBA08"
-                        : "rgba(255, 186, 8, 0.3)",
-                  }}
-                  onClick={() =>
-                    setSelectedTechnology(
-                      selectedTechnology === tech ? null : tech
-                    )
-                  }
-                  title={`Filtrar por ${tech}`}
-                />
-              ))}
-            </div>
+            {activeWidth > 768 ? (
+              // Desktop: Iconos
+              <div className={"d-flex flex-wrap justify-content-center gap-4"}>
+                {availableTechIcons.map(({ tech, icon: IconComponent }) => (
+                  <IconComponent
+                    key={tech}
+                    size="2em"
+                    style={{
+                      cursor: "pointer",
+                      color:
+                        selectedTechnology === tech
+                          ? "#FFBA08"
+                          : "rgba(255, 186, 8, 0.3)",
+                    }}
+                    onClick={() =>
+                      setSelectedTechnology(
+                        selectedTechnology === tech ? null : tech
+                      )
+                    }
+                    title={`Filtrar por ${tech}`}
+                  />
+                ))}
+              </div>
+            ) : (
+              // Mobile: Select
+              <select
+                value={selectedTechnology || ""}
+                onChange={(e) => setSelectedTechnology(e.target.value || null)}
+                style={{
+                  backgroundColor: "rgba(0, 0, 0, 0.3)",
+                  border: "2px solid rgba(255, 186, 8, 0.3)",
+                  borderRadius: "12px",
+                  color: "#FFBA08",
+                  padding: "12px 16px",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  outline: "none",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                  boxShadow: "0 4px 15px rgba(255, 186, 8, 0.1)",
+                  cursor: "pointer",
+                  minWidth: "200px",
+                  maxWidth: "300px",
+                  width: "100%",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#FFBA08";
+                  e.target.style.boxShadow = "0 0 0 3px rgba(255, 186, 8, 0.2)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "rgba(255, 186, 8, 0.3)";
+                  e.target.style.boxShadow = "0 4px 15px rgba(255, 186, 8, 0.1)";
+                }}
+              >
+                <option value="" style={{ backgroundColor: "#1a1a1a", color: "#FFBA08" }}>
+                  Todas las tecnologías
+                </option>
+                {availableTechIcons.map(({ tech }) => (
+                  <option
+                    key={tech}
+                    value={tech}
+                    style={{ backgroundColor: "#1a1a1a", color: "#FFBA08" }}
+                  >
+                    {tech}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
         </motion.div>
         {activeWidth > 768 ? (

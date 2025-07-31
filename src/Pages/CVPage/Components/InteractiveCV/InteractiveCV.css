@@ -19,6 +19,13 @@
     scroll-snap-align: start;
 }
 
+/* Mobile: usar 100dvh para mejor viewport handling */
+@media (max-width: 768px) {
+    .cv-section {
+        min-height: 100dvh;
+    }
+}
+
 .section-title {
     font-size: calc(1.5rem + 2vw);
     color: #f2bb05;

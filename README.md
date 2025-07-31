@@ -16,25 +16,94 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. Configurar el Proyecto
 
-### `npm run build`
+#### a. Dockerfile
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Asegúrate de tener un `Dockerfile` optimizado con multi-stage builds para mantener la imagen final ligera.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```dockerfile
+# Etapa 1: Build
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Etapa 2: Producción
+FROM nginx:alpine
+# Copiar build de React a Nginx
+COPY --from=builder /app/build /usr/share/nginx/html
+# Copiar configuración de Nginx para SPA
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Exponer puerto del contenedor
+EXPOSE 80
+# Comando para iniciar Nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
 
-### `npm run eject`
+#### b. docker-compose.yml
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Este es el archivo clave. Configura las variables de entorno para que `nginx-proxy` detecte tu contenedor automáticamente.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```yaml
+services:
+  portfolio: # Nombre del servicio
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-v4 # Nombre del contenedor
+    restart: unless-stopped
+    environment:
+      # --- Variables para nginx-proxy ---
+      - VIRTUAL_HOST=portfolio.jlgdev.com
+      - LETSENCRYPT_HOST=portfolio.jlgdev.com
+      - LETSENCRYPT_EMAIL=tu-email@dominio.com
+    networks:
+      - nginx_network # Conectar a la red del proxy
+    expose:
+      - "80" # Exponer puerto interno (NO usar 'ports')
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+networks:
+  nginx_network:
+    external: true # Indicar que la red ya existe
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Desplegar
+
+Una vez que los archivos y el DNS estén listos, el despliegue es un solo comando:
+
+```bash
+# Desde el directorio raíz de tu proyecto
+docker-compose up -d --build
+```
+
+### 4. Verificar
+
+1.  **Verificar estado del contenedor**:
+    ```bash
+    docker-compose ps
+    ```
+
+2.  **Asegurarse que está en la red correcta**:
+    ```bash
+    docker network inspect nginx_network | grep "portfolio-v4"
+    ```
+
+3.  **Ver logs de nginx-proxy** (opcional, para ver si detectó el nuevo host):
+    ```bash
+    # Desde el directorio de tu nginx-proxy
+    docker-compose logs -f nginx
+    ```
+
+4.  **Probar la URL**: Abre `https://portfolio.jlgdev.com` en tu navegador. El SSL puede tardar unos minutos en generarse la primera vez.
+
+---
+
+### Puntos Clave a Recordar
+
+-   **`expose` vs `ports`**: Usa `expose` para que el contenedor sea accesible solo dentro de la red de Docker. `ports` lo expondría al exterior, lo cual no es necesario si usas un proxy.
+-   **Red Externa**: La red `nginx_network` debe ser la misma que usa tu `nginx-proxy`.
+-   **Variables de Entorno**: `VIRTUAL_HOST` es obligatorio. `LETSENCRYPT_HOST` es para SSL.
+-   **Sin .conf manual**: No necesitas crear archivos de configuración manuales en tu `nginx-proxy`. El sistema es 100% automático.
