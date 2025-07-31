@@ -13,7 +13,8 @@ const HomeSectionContent = forwardRef(({ onNavClick }, ref) => {
         <motion.section 
             ref={ref}
             id="resumen"
-            className="cv-section d-flex flex-column h-100 align-items-center justify-content-center text-center px-3"
+            className="cv-section d-flex flex-column h-100 align-items-center justify-content-flex-start text-center px-3"
+            style={{ paddingTop: "40px" }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}

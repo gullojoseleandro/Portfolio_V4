@@ -114,8 +114,7 @@ const ContactsSectionContent = forwardRef(({ setActiveSection }, ref) => {
         <motion.section
             ref={ref}
             id="contacto"
-            className="cv-section d-flex align-items-center justify-content-center px-4"
-            style={{ minHeight: '100vh' }}
+            className="cv-section d-flex align-items-flex-start justify-content-flex-start px-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}

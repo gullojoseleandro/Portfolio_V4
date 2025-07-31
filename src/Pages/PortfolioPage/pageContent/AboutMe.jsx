@@ -72,8 +72,6 @@ const AboutMe = React.forwardRef(({ setActiveSection }, ref) => {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-        padding: isLargeScreen ? "120px 40px 60px" : "100px 20px 40px",
-        paddingTop: isLargeScreen ? "120px" : "100px",
       }}
     >
       <div className="about-container">

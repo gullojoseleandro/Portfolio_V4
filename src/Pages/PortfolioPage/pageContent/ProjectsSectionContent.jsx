@@ -205,8 +205,7 @@ const ProjectsSectionContent = React.forwardRef((props, ref) => {
     <motion.section
       ref={ref}
       id="proyectos"
-      className={`cv-section d-flex flex-column align-items-center justify-content-center`}
-      style={{ height: "100vh" }}
+      className={`cv-section d-flex flex-column align-items-center justify-content-flex-start`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
